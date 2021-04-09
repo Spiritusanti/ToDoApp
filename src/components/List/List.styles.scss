@@ -1,0 +1,14 @@
+.ListItems {
+    background: chartreuse;
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .todos-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 10px;
+    }
+}

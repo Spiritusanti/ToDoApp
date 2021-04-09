@@ -1,0 +1,25 @@
+.form {
+    font-size: 15px;
+    background: salmon;
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            text-align: center;
+            background: none;
+            border-style: hidden;
+            margin: 5px;
+            cursor: pointer;
+
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+
+        .description {
+            height: 25px;
+        }
+    }
+}

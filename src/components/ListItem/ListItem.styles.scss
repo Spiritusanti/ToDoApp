@@ -15,4 +15,20 @@
     h2 {
         font-size: 15px;
     }
+
+    .info-container{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        h2, p {
+            font-size: 15px;
+        }
+    }
+
+    .actions-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

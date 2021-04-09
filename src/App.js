@@ -1,21 +1,22 @@
-import './App.css';
-import InputForm from './components/inputform.component';
+// library imports
+import React from 'react';
+// Component imports
+import InputForm from './components/InputForm/inputform.component';
+import Header from './components/Header/Header.component';
+import List from './components/List/List.component';
+// styles imports
+import './App.scss';
+// dummy state import {task, date, description}
+import { todos } from './todos';
+
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1>Things you need to do!</h1>
-      </header>
-      <InputForm />
-      <div className="ToDoList">
-        <h1>To Do List:</h1>
-        <ul>
-          <li>item 1</li>
-          <li>item 2</li>
-          <li>item 3</li>
-          <li>item 4</li>
-        </ul>
+      <Header />
+      <div className="content">
+        <InputForm />
+        <List toDos={todos}/>
       </div>
     </div>
   );
