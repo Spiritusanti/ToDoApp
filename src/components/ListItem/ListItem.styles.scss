@@ -1,0 +1,18 @@
+.listItem {
+    height: 95%;
+    width: 95%;
+    text-align: center;
+    border-radius: 5px;
+    background: chocolate;
+    margin: 3px;
+    box-shadow: 0 4px 8px black;
+
+    &:hover {
+        transform: scale(1.01);
+    }
+
+
+    h2 {
+        font-size: 15px;
+    }
+}
