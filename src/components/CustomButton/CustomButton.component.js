@@ -1,11 +1,14 @@
 import React from 'react';
 import './CustomButton.styles.scss';
+import { Link } from 'react-router-dom';
 
 
-const CustomButton = ({ text }) => {
+const CustomButton = ({ text, route }) => {
     return (
         <div className='custom-button-container'>
-            <button>{text}</button>
+            <Link to={route}>    
+                <button>{text}</button>
+            </Link>
         </div>
     );
 }

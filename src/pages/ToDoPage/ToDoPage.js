@@ -2,12 +2,13 @@ import React from 'react';
 import Header from '../../components/Header/Header.component';
 import InputForm from '../../components/InputForm/inputform.component';
 import List from '../../components/List/List.component';
+import './ToDoPage.styles.scss';
 // dummy state
 import { todos } from '../../todos';
 
 const ToDoPage = () => {
 return (
-    <div className="App">
+    <div className="td-container">
       <Header />
       <div className="content">
         <InputForm />

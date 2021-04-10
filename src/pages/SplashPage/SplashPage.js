@@ -9,7 +9,7 @@ const SplashPage = () => {
         <div className="sp-container">
             <Header />
             <div className='sp-content'>
-                <CustomButton text={'Get Started'} />
+                <CustomButton text={'Get Started'} route='/todo'/>
             </div>
         </div>
     )

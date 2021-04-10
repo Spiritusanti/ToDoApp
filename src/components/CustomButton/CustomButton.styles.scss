@@ -2,12 +2,15 @@
 
     button {padding: 10px 60px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
     box-shadow: 2px 2px 4px rgba($color: black, $alpha: 0.2);
     cursor: pointer;
-    background: rgba($color: seagreen, $alpha: 0.8);
+    background: rgba($color: black, $alpha: 0.8);
     text-transform: uppercase;
+    color: whitesmoke;
+    font-size: 20px;
+    letter-spacing: 1px;
     }  
       
     &:hover {
