@@ -5,7 +5,8 @@ Goal of the project is to create a full stack To Do app capable of user authenti
 Goals:
 1. to create a clean and interactive design that is engaging and visually appealing to users.
 2. to lay out app logic and establish the flow of data in the app
-3. build appealing landing page
+3. build appealing landing page - complete!
+   1. will need to add in user auth and sign in functionality
 
 Challenges:
 1. deciding where and how to use state in the app - hooks? class component lifecycle methods?
