@@ -1,23 +1,21 @@
 // library imports
 import React from 'react';
+import { Route, Switch } from 'react-router';
+// Page imports
+import SplashPage from './pages/SplashPage/SplashPage';
+import ToDoPage from './pages/ToDoPage/ToDoPage';
 // Component imports
-import InputForm from './components/InputForm/inputform.component';
-import Header from './components/Header/Header.component';
-import List from './components/List/List.component';
 // styles imports
 import './App.scss';
-// dummy state import {task, date, description}
-import { todos } from './todos';
 
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <div className="content">
-        <InputForm />
-        <List toDos={todos}/>
-      </div>
+      <Switch>
+        <Route exact path='/' component={SplashPage} />
+        <Route exact path='/todo' component={ToDoPage} />
+      </Switch>
     </div>
   );
 }
