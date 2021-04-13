@@ -4,7 +4,7 @@ Goal of the project is to create a full stack To Do app capable of user authenti
 # Stage 1 - UI and front end functionality
 Goals:
 1. to create a clean and interactive design that is engaging and visually appealing to users.
-2. to lay out app logic and establish the flow of data in the app
+2. to lay out app logic and establish the flow of data in the app - good understanding at high level but details and coding are more difficult.
 3. build appealing landing page - complete!
    1. will need to add in user auth and sign in functionality
 

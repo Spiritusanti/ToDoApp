@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../../components/Header/Header.component';
 import InputForm from '../../components/InputForm/inputform.component';
 import List from '../../components/List/List.component';
 import './ToDoPage.styles.scss';
@@ -7,9 +6,9 @@ import './ToDoPage.styles.scss';
 import { todos } from '../../todos';
 
 const ToDoPage = () => {
-return (
+
+  return (
     <div className="td-container">
-      <Header />
       <div className="content">
         <InputForm />
         <List toDos={todos}/>

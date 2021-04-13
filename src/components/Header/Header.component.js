@@ -7,7 +7,7 @@ const Header = () => {
         <div className='container'>
             <div className='title-container'>
                 <h1>THINGS YOU NEED TO DO!</h1>
-                <p>A not so average To Do App</p>
+                <span>A not so average To Do App</span>
                 <div className='nav'>
                     <Link to='/'>
                         <h3>HOME</h3>
