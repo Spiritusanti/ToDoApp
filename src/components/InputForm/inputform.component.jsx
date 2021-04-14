@@ -1,51 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CustomButton from '../CustomButton/CustomButton.component';
+import { useForm } from "react-hook-form";
 import './InputForm.styles.scss'
 
 const InputForm = () => {
-  const [task , setTask] = useState([]);
-  const [name, setName ] = useState("");
+  const { register, handleSubmit} = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setTask({task: e.title, date: e.date, description: e.description});
-    console.log(task);
-  }
+  const onFormSubmit = data => console.log(data);
+  const onErrors = errors => console.error(errors);
 
-
-  const handleChange = (e) => {
-    const {value, name} = e.target;
-    setName({[name]: value});
-  }
     return (
         <div className="form">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onFormSubmit, onErrors)}>
             <h1>Add item</h1>
             <div className='input-container'>
               <input 
+              {...register("task", { required: true })}  
               type='text' 
-              name='task' 
-              id='title'
-              onChange={handleChange}
-              placeholder="task" />
-
-              <input 
-              type='date' 
-              name='date'
-              id='date'
-              onChange={handleChange}
+              placeholder="task"
               />
-
               <input 
-              className='description' 
-              type='textfield'  
-              name='description' 
+              {...register("date")} 
+              type='date'
+              />
+              <textarea 
+              {...register("description", { required:true })}
               id='description' 
               placeholder='description'
-              onChange={handleChange}
               />
+
             </div>
-            <button type='submit'>submit</button>
+            <CustomButton text="add to list" action='submit'/>
           </form>
       </div>
     );

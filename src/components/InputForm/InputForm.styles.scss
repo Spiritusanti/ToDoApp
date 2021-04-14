@@ -24,6 +24,18 @@
             }
         }
 
+        textarea {
+            text-align: center;
+            background: #c6c6c6;
+            width: 20%;
+            border: none;
+            border-radius: 20px;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
         .description {
             height: 25px;
         }
