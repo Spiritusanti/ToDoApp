@@ -3,6 +3,7 @@ import CustomButton from '../CustomButton/CustomButton.component';
 import './ListItem.styles.scss';
 
 
+
 const ListItem = ({ toDo }) => {
     return (
         <div className='listItem'>
@@ -13,7 +14,7 @@ const ListItem = ({ toDo }) => {
             </div>
             <div className='actions-container' >
                 <CustomButton text={'complete'} />
-                <CustomButton text={'remove'} />
+                <CustomButton text={'remove'} action={'remove'}/>
             </div>
         </div>
     );
