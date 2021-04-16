@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputForm from '../../components/InputForm/inputform.component';
 import List from '../../components/List/List.component';
-import { TodosProvider } from '../../todos.context';
 import './ToDoPage.styles.scss';
 // dummy state
-import { todos } from '../../todos';
+// import { todos } from '../../todos';
+
 
 const ToDoPage = () => {
+  const [todos, setTodos] = useState([]);
+  console.log('todos', todos);
+
+  const updateTodos = (data) => {
+    return setTodos(...todos, data);
+  }
   return (
     <div className="td-container">
       <div className="content">
-        <TodosProvider>
-          <InputForm />
-          <List toDos={todos}/>
-        </TodosProvider>
+          <InputForm onUpdateTodos={updateTodos} />
+          <List taskList={todos}/>
       </div>
     </div>
   );

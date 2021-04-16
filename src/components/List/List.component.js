@@ -2,14 +2,14 @@ import React from 'react';
 import ListItem from '../ListItem/ListItem.component';
 import './List.styles.scss';
 
-const List = ({ toDos }) => {
+const List = ({ taskList }) => {
     return (
         <div className="ListItems">
             <h2>To Do List</h2>
             <div className='todos-container'>
                 {
-                    toDos.map((toDo, i) => {
-                    return <ListItem key={i} toDo={toDo} />
+                    taskList.map((task, i) => {
+                    return <ListItem key={i} task={task} />
                     })
                 }
             </div>

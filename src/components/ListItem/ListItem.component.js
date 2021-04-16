@@ -4,13 +4,13 @@ import './ListItem.styles.scss';
 
 
 
-const ListItem = ({ toDo }) => {
+const ListItem = ({ task }) => {
     return (
         <div className='listItem'>
-            <h2 className='task'>{toDo.task}</h2>
+            <h2 className='task'>{task.task}</h2>
             <div className='info-container'>
-                <h2 className='date'>Date: {toDo.date}</h2>
-                <p className='description'>Description: {toDo.description}</p>
+                <h2 className='date'>Date: {task.date}</h2>
+                <p className='description'>Description: {task.description}</p>
             </div>
             <div className='actions-container' >
                 <CustomButton text={'complete'} />

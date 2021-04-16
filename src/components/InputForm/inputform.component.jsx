@@ -1,19 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import CustomButton from '../CustomButton/CustomButton.component';
 import { useForm } from "react-hook-form";
 import './InputForm.styles.scss'
-import { TodosContext } from '../../todos.context';
 
-const InputForm = () => {
-  // for setup
-  const { register, handleSubmit} = useForm();
-  const onFormSubmit = data => setTask(data);
+const InputForm = ({ onUpdateTodos }) => {
+  // useForm setup
+  const { register, handleSubmit } = useForm();
+  const onFormSubmit = data => {onUpdateTodos([data])}
   const onErrors = errors => console.error(errors);
-  // state managment
-  const [task, setTask] = useState([]);
-  const [todos, setTodos] = useContext(TodosContext);
-  console.log('todos:', todos);
-  console.log('task:', task);
+  
   
     return (
         <div className="form">
