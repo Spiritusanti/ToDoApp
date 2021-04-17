@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomButton from '../CustomButton/CustomButton.component';
+import CustomButton from '../CustomButton/CustomButton.component'
 import './ListItem.styles.scss';
 
 

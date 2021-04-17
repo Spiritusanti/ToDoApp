@@ -6,17 +6,19 @@ import './ToDoPage.styles.scss';
 // import { todos } from '../../todos';
 
 
+
 const ToDoPage = () => {
   const [todos, setTodos] = useState([]);
   console.log('todos', todos);
 
   const updateTodos = (data) => {
-    return setTodos(...todos, data);
+    return setTodos([...todos, data]);
   }
+
   return (
     <div className="td-container">
       <div className="content">
-          <InputForm onUpdateTodos={updateTodos} />
+          <InputForm onUpdateTodos={updateTodos}/>
           <List taskList={todos}/>
       </div>
     </div>

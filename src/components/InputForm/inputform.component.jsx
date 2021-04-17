@@ -6,7 +6,7 @@ import './InputForm.styles.scss'
 const InputForm = ({ onUpdateTodos }) => {
   // useForm setup
   const { register, handleSubmit } = useForm();
-  const onFormSubmit = data => {onUpdateTodos([data])}
+  const onFormSubmit = data => {onUpdateTodos(data)}
   const onErrors = errors => console.error(errors);
   
   
