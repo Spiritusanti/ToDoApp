@@ -19,11 +19,11 @@ export const ACTIONS = {
 const reducer = (todos, action) => {
   switch(action.type) {
     case ACTIONS.ADD_TASK:
-      return [...todos, newTask(action.payload.task, action.payload.date, action.payload.description)];
+      return [...todos, newTask(action.payload.task, action.payload.date, action.payload.description, action.payload.id, action.payload.complete)];
     case ACTIONS.TOGGLE_TASK:
       return todos.map(task => {
         if(task.id === action.payload.id){
-          return{...task, complete: task.complete}
+          return{...task, complete: !task.complete}
         }
         return task;
       })
@@ -60,9 +60,9 @@ const ToDoPage = () => {
           <form onSubmit={handleSubmit}>
             <h1>add item</h1>
             <div className='input-container'>
-              <input type='text' placeholder='task' value={task} onChange={e => setTask(e.target.value)}/>
-              <input type='date' value={date} onChange={e => setDate(e.target.value)}/>
-              <textarea id='description' placeholder='description' value={description} onChange={e => setDescription(e.target.value)}/>
+              <input required type='text' placeholder='task' value={task} onChange={e => setTask(e.target.value)}/>
+              <input required type='date' value={date} onChange={e => setDate(e.target.value)}/>
+              <textarea required id='description' placeholder='description' value={description} onChange={e => setDescription(e.target.value)}/>
             </div>
             <CustomButton text='add to list' action='submit' handleClick={handleSubmit} />
           </form>
@@ -71,17 +71,17 @@ const ToDoPage = () => {
           <h2>To Do List</h2>
           <div className='todos-container'>
             {
-              todos.map((todo, i) => {
+              todos.map((todo, key) => {
                 return (
-                  <div className='listItem' key={i}>
+                  <div className='listItem'>
                   <h2 className='task complete'>{todo.task}</h2>
                   <div className='info-container'>
                       <h2 className='date'>Date: {todo.date}</h2>
                       <p className='description'>Description: {todo.description}</p>
                   </div>
                   <div className='actions-container' >
-                      <CustomButton text={'complete'} />
-                      <CustomButton text={'remove'} action={'remove'}/>
+                      <CustomButton text={'complete'} handleClick={() => {dispatch({type:ACTIONS.TOGGLE_TODO, payload:{id:todo.id}})}}/>
+                      <CustomButton text={'remove'} handleClick= {()=> {dispatch({type:ACTIONS.DELETE_TODO, payload:{id:todo.id}})}}/>
                   </div>
               </div>
                 )
