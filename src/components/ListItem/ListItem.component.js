@@ -1,20 +1,20 @@
 import React from 'react';
-import CustomButton from '../CustomButton/CustomButton.component'
+import { ACTIONS } from '../../pages/ToDoPage/ToDoPage';
+import CustomButton from '../CustomButton/CustomButton.component';
 import './ListItem.styles.scss';
 
 
 
-const ListItem = ({ task }) => {
+const ListItem = ({ todo, dispatch }) => {
     return (
-        <div className='listItem'>
-            <h2 className='task'>{task.task}</h2>
+        <div className='listItem' style={{color : todo.complete ? " rgb(7, 245, 7)" : "black"}}>
+            <h2 className='task'>{todo.name}</h2>
             <div className='info-container'>
-                <h2 className='date'>Date: {task.date}</h2>
-                <p className='description'>Description: {task.description}</p>
+                <p>Lorem ipsum I don't know</p>
             </div>
             <div className='actions-container' >
-                <CustomButton text={'complete'} />
-                <CustomButton text={'remove'} action={'remove'}/>
+                <CustomButton text={'complete'} handleClick={() =>  {dispatch({type: ACTIONS.TOGGLE_TODO, payload:{id:todo.id}})}} />
+                <CustomButton text={'remove'} handleClick={() =>  {dispatch({type: ACTIONS.DELETE_TODO, payload:{id:todo.id}})}} />
             </div>
         </div>
     );

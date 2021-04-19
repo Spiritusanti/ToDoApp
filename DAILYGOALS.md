@@ -20,3 +20,8 @@
        1. collapse component tree to single working component and then expand back out to components 
        2. implement useReducer to manage state this time
        3. remove use form hook library and any unused code.
+# WEEK OF 4/19/2021
+    1. work towards MVP(minimum viable product) - need to complete button functionality - success!!!!!
+       1. complete button - either handle locally with an onClick method to toggle class or figure out how to do so through the useReducer hook
+          1. completed with useReducer hook!
+# reached MVP! -- 04/19/2021
