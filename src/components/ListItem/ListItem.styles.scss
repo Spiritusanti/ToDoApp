@@ -1,11 +1,11 @@
 .listItem {
     height: 95%;
-    width: 95%;
+    width: 25vw;
     text-align: center;
     border-radius: 5px;
-    background: #C6C6C6;
-    margin: 7px;
+    background: inherit;
     box-shadow: 0 4px 8px black;
+    
 
     &:hover {
         transform: scale(1.01);
@@ -14,12 +14,14 @@
 
     h2 {
         font-size: 15px;
+        color: #CDE2B8;
     }
 
     .info-container{
         display: flex;
         justify-content: space-around;
         align-items: center;
+        color: #CDE2B8;
 
         h2, p {
             font-size: 15px;
@@ -30,24 +32,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-
-        button {padding: 10px 60px;
-            margin: 5px;
-            border-radius: 10px;
-            border: none;
-            box-shadow: 2px 2px 4px rgba($color: black, $alpha: 0.2);
-            cursor: pointer;
-            background: rgba($color: black, $alpha: 0.8);
-            text-transform: uppercase;
-            color: whitesmoke;
-            font-size: 20px;
-            letter-spacing: 1px;
-            }  
-              
-            &:hover {
-                transform: scale(1.05);
-            }
     }
 }
 

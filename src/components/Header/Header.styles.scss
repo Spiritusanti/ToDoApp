@@ -6,15 +6,15 @@
     margin-bottom: 5px;
     padding-bottom: 5px;
     // will need to update color once closer to deployment.
-    background-color: white;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #7C8B95;
+    box-shadow: 4px 4px 8px rgba(black, 0.2);
     display: flex;
     justify-content: center;
     z-index: 10;
     
     .title-container {
         width: 60vw;
-
+        color: #CDE2B8;
         h1 {
             font-size: 30px;
             margin-top: 0px;
@@ -36,7 +36,7 @@
             text-decoration: none;
             h3 {
                 font-size: 0.8rem;
-                color: black;
+                color: #CDE2B8;
                 letter-spacing: 0.8px;
             }
         }
