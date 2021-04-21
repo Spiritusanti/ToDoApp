@@ -1,11 +1,12 @@
 .listItem {
     height: 95%;
-    width: 95%;
+    width: 200px;
     text-align: center;
     border-radius: 5px;
-    background: #C6C6C6;
-    margin: 7px;
+    background: inherit;
     box-shadow: 0 4px 8px black;
+    margin: 5px;
+    
 
     &:hover {
         transform: scale(1.01);
@@ -14,12 +15,13 @@
 
     h2 {
         font-size: 15px;
+        color: #CDE2B8;
     }
 
     .info-container{
         display: flex;
         justify-content: space-around;
-        align-items: center;
+        color: #CDE2B8;
 
         h2, p {
             font-size: 15px;
@@ -28,6 +30,7 @@
 
     .actions-container {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }

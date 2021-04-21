@@ -1,28 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
+import './ToDoPage.styles.scss';
 import InputForm from '../../components/InputForm/inputform.component';
 import List from '../../components/List/List.component';
-import './ToDoPage.styles.scss';
-// dummy state
-// import { todos } from '../../todos';
 
 
-
-const ToDoPage = () => {
-  const [todos, setTodos] = useState([]);
-  console.log('todos', todos);
-
-  const updateTodos = (data) => {
-    return setTodos([...todos, data]);
-  }
-
-  return (
-    <div className="td-container">
-      <div className="content">
-          <InputForm onUpdateTodos={updateTodos}/>
-          <List taskList={todos}/>
-      </div>
-    </div>
-  );
+export const ACTIONS ={
+    ADD_TODO: 'add_todo',
+    TOGGLE_TODO: 'toggle_todo',
+    DELETE_TODO: 'delete_todo'
 }
 
-export default ToDoPage;
+function reducer(todos, action){
+    switch(action.type) {
+        case ACTIONS.ADD_TODO:
+            return [...todos, newTodo(action.payload.name)]
+        case ACTIONS.TOGGLE_TODO:
+            return todos.map(todo => {
+                if(todo.id === action.payload.id){
+                    return{...todo, complete: !todo.complete}
+                }
+                return todo
+            })
+        case ACTIONS.DELETE_TODO:
+            return todos.filter(todo => todo.id !==action.payload.id)
+        default:
+            return todos
+    }
+}
+
+function newTodo(name) {
+    return{id:Date.now(), name:name, complete:false}
+}
+
+
+function Todos() {
+    const [todos, dispatch] = useReducer(reducer, []);
+    const [name, setName] = useState('');
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        dispatch({type:ACTIONS.ADD_TODO, payload:{name:name}})
+        setName('')
+    }
+    console.log(todos);
+
+
+    return (
+        <div className="td-container">
+            <div className='content'>
+                <InputForm name={name} handleSubmit={handleSubmit} setName={setName} />
+                <List todos={todos} dispatch={dispatch}/>
+            </div>
+        </div>
+    )
+}
+
+export default Todos;
