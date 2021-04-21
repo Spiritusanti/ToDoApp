@@ -25,3 +25,5 @@
        1. complete button - either handle locally with an onClick method to toggle class or figure out how to do so through the useReducer hook
           1. completed with useReducer hook!
 # reached MVP! -- 04/19/2021
+# 04/21/2021
+   1. created working menu component
