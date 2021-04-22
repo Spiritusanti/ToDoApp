@@ -3,14 +3,17 @@ import React from 'react';
 import './Menu.styles.scss';
 import { Link } from 'react-router-dom';
 
-const Menu = ({ open }) => {
+const Menu = ({ open, setOpen }) => {
     return (
         <nav className="nav" open={open} style={open ? {transform: "translateX(0)"} : {transform: "translateX(110%)"}}>
-            <Link to="/">
+            <Link to="/" onClick={() => {setOpen(!open)}}>
                 <span role="img" aria-label="home">Home</span>
             </Link>
-            <Link to="/todo">
-                <span role="img" aria-label="home">My List</span>
+            <Link to="/signin" onClick={() => {setOpen(!open)}}>
+                <span role="img" aria-label="sign in">Sign In</span>
+            </Link>
+            <Link to="/todo" onClick={() => {setOpen(!open)}}>
+                <span role="img" aria-label="my list">My List</span>
             </Link>
         </nav>
     )

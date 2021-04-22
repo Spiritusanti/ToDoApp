@@ -8,8 +8,8 @@ const SplashPage = () => {
     return (
         <div className="sp-container">
             <div className='sp-content'>
-                <Link to='./todo'>
-                    <CustomButton text={'Get Started'} route='/todo'/>
+                <Link to='./signin'>
+                    <CustomButton text={'Get Started'}/>
                 </Link>
             </div>
         </div>

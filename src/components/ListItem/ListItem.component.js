@@ -7,9 +7,9 @@ import './ListItem.styles.scss';
 
 const ListItem = ({ todo, dispatch }) => {
     return (
-        <div className='listItem' style={{color : todo.complete ? " rgb(7, 245, 7)" : "black"}}>
-            <h2 className='task'>{todo.name}</h2>
-            <div className='info-container'>
+        <div className='listItem'>
+            <h2 className='task' style={{color : todo.complete ? "orange" : "#CDE2B8"}}>{todo.name}</h2>
+            <div className='info-container' style={{color : todo.complete ? "orange" : "#CDE2B8"}}>
                 <p>Lorem ipsum I don't know</p>
             </div>
             <div className='actions-container' >

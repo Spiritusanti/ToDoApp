@@ -27,3 +27,6 @@
 # reached MVP! -- 04/19/2021
 # 04/21/2021
    1. created working menu component
+# 4/22/2021
+   1. create sign in/sign up component - either modal or page
+   2. make button size consistent on todo cards.
