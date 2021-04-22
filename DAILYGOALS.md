@@ -28,5 +28,6 @@
 # 04/21/2021
    1. created working menu component
 # 4/22/2021
-   1. create sign in/sign up component - either modal or page
-   2. make button size consistent on todo cards.
+   1. create sign in/sign up component - either modal or page -UI completed
+      1. need to implement logic - another useReducer hook in prep for linking up with backend
+   2. make button size consistent on todo cards. -completed!
