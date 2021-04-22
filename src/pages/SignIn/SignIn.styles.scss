@@ -1,0 +1,11 @@
+.signin-page {
+    position: relative;
+    top: 15vh;
+    display: flex;
+    margin: 10px;
+
+
+    @media(max-width: 480px) {
+        flex-direction: column;
+    }
+}
