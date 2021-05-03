@@ -3,10 +3,6 @@ import CustomButton from '../CustomButton/CustomButton.component';
 import './InputForm.styles.scss'
 
 const InputForm = ({name, setName, handleSubmit}) => {
-  // useForm setup
-
-  
-  
     return (
         <div className="form">
           <form className="form" onSubmit={handleSubmit}>

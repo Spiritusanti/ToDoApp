@@ -27,3 +27,9 @@
 # reached MVP! -- 04/19/2021
 # 04/21/2021
    1. created working menu component
+# 4/22/2021
+   1. create sign in/sign up component - either modal or page -UI completed
+      1. need to implement logic - another useReducer hook in prep for linking up with backend
+   2. make button size consistent on todo cards. -completed!
+# 4/25/2021
+   1. begin implmenting front end sign in and register logic

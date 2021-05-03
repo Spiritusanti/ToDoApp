@@ -11,6 +11,7 @@ import Burger from './components/menu/burger/Burger.component';
 import Menu from './components/menu/Menu/Menu.component';
 // styles imports
 import './App.scss';
+import SignIn from './pages/SignIn/SignIn';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={SplashPage} />
         <Route exact path='/todo' component={ToDoPage} />
+        <Route exact path='/signin' component={SignIn} />
       </Switch>
     </div>
   );

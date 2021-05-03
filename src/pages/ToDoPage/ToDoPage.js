@@ -10,7 +10,7 @@ export const ACTIONS ={
     DELETE_TODO: 'delete_todo'
 }
 
-function reducer(todos, action){
+function todosReducer(todos, action){
     switch(action.type) {
         case ACTIONS.ADD_TODO:
             return [...todos, newTodo(action.payload.name)]
@@ -34,7 +34,7 @@ function newTodo(name) {
 
 
 function Todos() {
-    const [todos, dispatch] = useReducer(reducer, []);
+    const [todos, dispatch] = useReducer(todosReducer, []);
     const [name, setName] = useState('');
 
     function handleSubmit(e) {

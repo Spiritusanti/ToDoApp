@@ -8,12 +8,3 @@
 
 # Goal statement:
  - create a fully functional To Do app capable of persistent data and user authentication.
-
-
-
-# color palette
-$color-primary-0: #F5F5F5;	// Main Primary color */
-$color-primary-1: #FFFFFF;
-$color-primary-2: #FFFFFF;
-$color-primary-3: #C6C6C6;
-$color-primary-4: #9A9898;
