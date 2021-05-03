@@ -18,6 +18,11 @@
         width: 100%;
     }
 
+    div{
+        display: flex;
+        flex-direction: column;
+    }
+
     a {
         font-size: 2rem;
         text-transform: uppercase;

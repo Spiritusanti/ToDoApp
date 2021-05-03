@@ -29,7 +29,7 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
-    console.log("parent formData: ", {username, password, email, formData});
+    console.log("parent formData: ", {username, password, email});
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -48,13 +48,21 @@ const SignIn = () => {
     return (
         <div className="signin-page">
             <LogIn 
-            handleSubmit={handleLogIn} 
-            email={email} 
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
+                handleSubmit={handleLogIn} 
+                email={email} 
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
             />
-            <SignUp handleRegister={handleRegister}/>
+            <SignUp 
+                handleRegister={handleRegister}
+                username = {username}
+                setUsername={setUsername}
+                email={email} 
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+            />
         </div>
     )
 }

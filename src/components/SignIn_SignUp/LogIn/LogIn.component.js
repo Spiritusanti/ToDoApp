@@ -10,7 +10,7 @@ const LogIn = ({ handleLogIn, email, setEmail, password, setPassword }) => {
                 <input placeholder="email" value={email} onChange={e => setEmail(e.target.value)} />
                 <input placeholder="password" type="password" value={password} onChange={e => setPassword(e.target.value)}/>
             </form>
-            <CustomButton text="login" handleClick={console.log('click')}/>
+            <CustomButton text="login" handleClick={() => handleLogIn}/>
         </div>
     )
 }

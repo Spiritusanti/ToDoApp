@@ -39,8 +39,12 @@ function Todos() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch({type:ACTIONS.ADD_TODO, payload:{name:name}})
-        setName('')
+        if(name !== '') {
+            dispatch({type:ACTIONS.ADD_TODO, payload:{name:name}})
+            setName('')
+        } else {
+            alert('please enter Todo')
+        }
     }
     console.log(todos);
 

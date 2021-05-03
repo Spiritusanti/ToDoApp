@@ -16,6 +16,7 @@ import SignIn from './pages/SignIn/SignIn';
 
 function App() {
   const [open, setOpen] = useState(false);
+  const [isSignedIn, setisSignedIn] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
 
@@ -24,7 +25,7 @@ function App() {
     <Header />
     <div ref={node}>
       <Burger open={open} setOpen={setOpen}/>
-      <Menu open={open} setOpen={setOpen}/>
+      <Menu open={open} setOpen={setOpen} isSignedIn={isSignedIn} setisSignedIn={setisSignedIn}/>
     </div>
       <Switch>
         <Route exact path='/' component={SplashPage} />
