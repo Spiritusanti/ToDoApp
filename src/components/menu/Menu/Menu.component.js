@@ -15,6 +15,9 @@ const Menu = ({ open, setOpen }) => {
             <Link to="/todo" onClick={() => {setOpen(!open)}}>
                 <span role="img" aria-label="my list">My List</span>
             </Link>
+            <Link to="/todo" onClick={() => {setOpen(!open)}}>
+            <span role="img" aria-label="my list">Sign Out</span>
+        </Link>
         </nav>
     )
 }
