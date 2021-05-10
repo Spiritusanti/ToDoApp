@@ -1,4 +1,4 @@
-// dummy todos data to use for testing state
+// dummy todos data to use for testing functionality
 
 export const todos =[
     {

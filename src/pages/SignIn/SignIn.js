@@ -1,60 +1,62 @@
-import React, { useReducer, useState } from 'react';
+import React, { useState } from 'react';
+import CustomButton from '../../components/CustomButton/CustomButton.component';
 import LogIn from '../../components/SignIn_SignUp/LogIn/LogIn.component';
 import SignUp from '../../components/SignIn_SignUp/SignUp/SignUp.component';
 import './SignIn.styles.scss';
 
-export const signinACTIONS = {
-    SIGN_IN: 'sign_in',
-    SIGN_OUT: 'sign_out',
-    REGISTER: 'register'
-}
-
-const signinReducer = (formData, action) => {
-    switch(action.type) {
-        case signinACTIONS.SIGN_IN:
-            return console.log('signin: ', action.payload.email, action.payload.password)
-        case signinACTIONS.SIGN_OUT:
-            return console.log(formData)
-        case signinACTIONS.REGISTER:
-            return console.log('register:', formData)
-        default:
-            return;
-    }
-}
-
-
 const SignIn = () => {
-    const [formData, dispatch] = useReducer(signinReducer, []);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [showLogIn, setShowLogIn] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(false)
 
-    console.log("parent formData: ", {username, password, email});
+
+    const triggerLogIn = () => {
+        setShowLogIn(!showLogIn);
+        setShowSignUp(false);
+    }
+
+    const triggerSignUp = () => {
+        setShowSignUp(!showSignUp);
+        setShowLogIn(false);
+    }
 
     const handleLogIn = (e) => {
         e.preventDefault();
-        dispatch({type: signinACTIONS.SIGN_IN, payload:{email: email, password: password}})
         setPassword('');
         setEmail('');
     }
 
     const handleRegister = (e) => {
         e.preventDefault();
-        dispatch({type: signinACTIONS.REGISTER, payload:{username, email, password}})
         setPassword('');
         setUsername('');
     }
 
+    // Want to conditionally render sign in and sign up components based on user action
+
     return (
         <div className="signin-page">
-            <LogIn 
+            { (showLogIn === false && showSignUp === false) ?
+                <div>
+                    <CustomButton text={'Log In'} handleClick={triggerLogIn}/>
+                    <CustomButton text={'Sign Up'} handleClick={triggerSignUp}/>
+                </div>
+                :
+                 null
+            }
+
+            {showLogIn ? <LogIn 
                 handleSubmit={handleLogIn} 
                 email={email} 
                 setEmail={setEmail}
                 password={password}
                 setPassword={setPassword}
-            />
-            <SignUp 
+                showLogIn={showLogIn}
+                setShowLogIn={setShowLogIn}
+            /> : null }
+            { showSignUp ? <SignUp 
                 handleRegister={handleRegister}
                 username = {username}
                 setUsername={setUsername}
@@ -62,7 +64,9 @@ const SignIn = () => {
                 setEmail={setEmail}
                 password={password}
                 setPassword={setPassword}
-            />
+                showSignUp={showSignUp}
+                setShowSignUp={setShowSignUp}
+            /> : null }
         </div>
     )
 }

@@ -1,4 +1,5 @@
 .log-in {
+    box-sizing: border-box;
     background: #7C8B95;
     width: 45vw;
     border-radius: 13px;
@@ -7,12 +8,6 @@
     flex-direction: column;
     padding: 3px;
     margin: 5px;
-
-    
-    form {
-        display: inherit;
-        flex-direction: inherit;
-    }
     
     h2 {
         color: #CDE2B8;
@@ -35,6 +30,17 @@
         &:hover {
             transform: scale(1.03);
         }
+    }
+
+    .close::after {
+        display: inline-block;
+        color: #CDE2B8;
+        cursor: pointer;
+        content:"\00d7";
+        font-size: 25px;
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 15px;
     }
 
     @media(max-width: 480px) {
