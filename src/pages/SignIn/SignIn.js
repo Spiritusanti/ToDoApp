@@ -10,7 +10,6 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [showLogIn, setShowLogIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
-  console.log(username, password, email);
 
   const triggerLogIn = () => {
     setShowLogIn(!showLogIn);
@@ -39,7 +38,7 @@ const SignIn = () => {
 
   return (
     <div className="signin-page">
-      {showLogIn === false && showSignUp === false ? (
+      {!showLogIn && !showSignUp ? (
         <div>
           <CustomButton text={"Log In"} handleClick={triggerLogIn} />
           <CustomButton text={"Sign Up"} handleClick={triggerSignUp} />
