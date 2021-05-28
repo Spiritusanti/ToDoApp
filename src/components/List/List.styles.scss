@@ -1,24 +1,22 @@
 .ListItems {
-    background: #7C8B95;
+  background: #7c8b95;
 
+  h2 {
+    font-size: 30px;
+    color: #cde2b8;
+  }
 
-    h2 {
-        font-size: 30px;
-        color: #CDE2B8;
-    }
+  .todos-container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+  }
 
+  @media (max-width: 480px) {
     .todos-container {
-        width: 80%;
-        display: flex;
-        align-items: center;
-        font-size: 10px;
+      width: 100%;
+      flex-direction: column;
     }
-
-    @media (max-width: 480px) {
-        .todos-container {
-            width: 100%;
-            flex-direction: column;
-        }
-    }
+  }
 }
-

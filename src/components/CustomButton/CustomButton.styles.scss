@@ -1,7 +1,7 @@
 .custom-button-container {
-    width: 100%;
+  width: 100%;
 
-    button {
+  button {
     width: 95%;
     padding: 10px 60px;
     margin: 5px;
@@ -11,12 +11,12 @@
     cursor: pointer;
     background: rgba(144, 165, 169, 0.8);
     text-transform: uppercase;
-    color: #CDE2B8;
+    color: #cde2b8;
     font-size: 1em;
     letter-spacing: 1px;
-    }  
-      
-    &:hover {
-        transform: scale(1.05);
-    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
