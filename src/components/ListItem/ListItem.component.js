@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 import { ACTIONS } from "../../pages/ToDoPage/ToDoPage";
 import CustomButton from "../CustomButton/CustomButton.component";
 import "./ListItem.styles.scss";
 
 const ListItem = ({ todo, dispatch }) => {
-  const [notes, setNotes] = useState("Add notes");
   return (
     <div className="listItem">
       <h2
@@ -17,7 +15,7 @@ const ListItem = ({ todo, dispatch }) => {
         className="info-container"
         style={{ color: todo.complete ? "orange" : "#CDE2B8" }}
       >
-        <p>{notes}</p>
+        <p>Work needed</p>
       </div>
       <div className="actions-container">
         <CustomButton
