@@ -6,31 +6,33 @@ import "./SignIn.styles.scss";
 
 const SignIn = () => {
   const [userAuth, setUserAuth] = useState({
-    username: '', 
-    email: '',
-    password: ''
+    username: "",
+    email: "",
+    password: "",
   });
+  console.log(userAuth);
+
   const [showLogIn, setShowLogIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
 
-  console.log(userAuth);
-
   const triggerLogIn = () => {
-    setShowLogIn(!showLogIn);
+    setShowLogIn(true);
     setShowSignUp(false);
   };
 
   const triggerSignUp = () => {
-    setShowSignUp(!showSignUp);
+    setShowSignUp(true);
     setShowLogIn(false);
   };
 
-  const handleLogIn = (e) => {
-    e.preventDefault();
+  const closeInputCard = () => {
+    setShowLogIn(false);
+    setShowSignUp(false);
   };
 
-  const handleRegister = (userCredentials) => {
+  const handleUserAuth = (userCredentials) => {
     setUserAuth(userCredentials);
+    closeInputCard();
   };
 
   // Want to conditionally render sign in and sign up components based on user action
@@ -39,24 +41,16 @@ const SignIn = () => {
     <div className="signin-page">
       {!showLogIn && !showSignUp ? (
         <div>
-          <CustomButton text={"Log In"} onHandleClick={triggerLogIn} />
-          <CustomButton text={"Sign Up"} onHandleClick={triggerSignUp} />
+          <CustomButton onClick={triggerLogIn}>Log In</CustomButton>
+          <CustomButton onClick={triggerSignUp}>Sign Up</CustomButton>
         </div>
       ) : null}
 
       {showLogIn ? (
-        <LogIn
-          onHandleSubmit={handleLogIn}
-          showLogIn={showLogIn}
-          setShowLogIn={setShowLogIn}
-        />
+        <LogIn onUserInput={handleUserAuth} onClose={closeInputCard} />
       ) : null}
       {showSignUp ? (
-        <SignUp
-          onHandleRegister={handleRegister}
-          showSignUp={showSignUp}
-          setShowSignUp={setShowSignUp}
-        />
+        <SignUp onUserInput={handleUserAuth} onClose={closeInputCard} />
       ) : null}
     </div>
   );
