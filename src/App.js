@@ -6,12 +6,11 @@ import { Route, Switch } from "react-router";
 import SplashPage from "./pages/SplashPage/SplashPage";
 import ToDoPage from "./pages/ToDoPage/ToDoPage";
 // Component imports
-import Header from "./components/Header/Header.component";
+import Header from "./components/UI/Header/Header.component";
 import Burger from "./components/menu/burger/Burger.component";
 import Menu from "./components/menu/Menu/Menu.component";
 // styles imports
 import "./App.scss";
-import SignIn from "./pages/SignIn/SignIn";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -34,7 +33,6 @@ function App() {
       <Switch>
         <Route exact path="/" component={SplashPage} />
         <Route exact path="/todo" component={ToDoPage} />
-        <Route exact path="/signin" component={SignIn} />
       </Switch>
     </div>
   );
