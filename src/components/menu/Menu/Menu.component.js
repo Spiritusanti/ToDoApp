@@ -34,7 +34,7 @@ const Menu = ({ open, setOpen, isSignedIn, setisSignedIn }) => {
               setisSignedIn(!isSignedIn);
             }}
           >
-            <span role="img" aria-label="my list">
+            <span role="img" aria-label="sign out">
               Sign Out
             </span>
           </Link>

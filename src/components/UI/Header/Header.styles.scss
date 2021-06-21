@@ -2,23 +2,22 @@
   position: absolute;
   top: 0;
   width: 100%;
-  height: auto;
-  margin-bottom: 5px;
+  margin-bottom: 0 auto;
   padding-bottom: 5px;
   // will need to update color once closer to deployment.
-  background-color: #7c8b95;
+  background-color: #292929;
   box-shadow: 4px 4px 8px rgba(black, 0.2);
   display: flex;
   justify-content: center;
   z-index: 10;
 
   .title-container {
-    width: 60vw;
-    color: #cde2b8;
+    width: 60%;
+    color: #CCC;
+    text-align: center;
     h1 {
       font-size: 30px;
-      margin-top: 0px;
-      margin-bottom: 0px;
+      margin: 0 auto;
       padding-bottom: 0px;
 
       a {

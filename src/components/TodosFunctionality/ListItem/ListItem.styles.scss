@@ -1,6 +1,5 @@
 .listItem {
-  height: 95%;
-  width: 200px;
+  width: 75%;
   text-align: center;
   border-radius: 5px;
   background: inherit;
@@ -8,7 +7,19 @@
   margin: 5px;
 
   &:hover {
-    transform: scale(1.01);
+    transform: scale(1.005);
+  }
+
+  .close-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  span {
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-right: 0.75em;
   }
 
   h2 {
@@ -31,5 +42,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  button {
+    width: 10em;
+    border: none;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 1em 3em;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.01);
+    }
   }
 }

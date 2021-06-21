@@ -1,17 +1,16 @@
 .nav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: gray;
   height: 100vh;
   text-align: right;
-  padding: 2rem;
+  padding-top: 5rem;
   position: absolute;
   top: 0;
   right: 0;
   transition: transform 0.3s ease-in-out;
   z-index: 8;
   transform: translateX(110%);
+  background: #292929;
 
   @media (max-width: 480px) {
     width: 100%;
@@ -23,9 +22,9 @@
   }
 
   a {
-    font-size: 2rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    padding: 2rem 0;
+    padding: 0.5rem;
     font-weight: bold;
     letter-spacing: 0.5rem;
     color: black;
@@ -33,8 +32,9 @@
     transition: color 0.3s linear;
 
     @media (max-width: 480px) {
-      font-size: 1.5rem;
       text-align: right;
+      font-size: 3rem;
+      padding: 3rem;
     }
 
     &:hover {
