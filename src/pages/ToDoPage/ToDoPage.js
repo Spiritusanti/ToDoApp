@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { todoActions } from "../../redux/todo-slice";
 import "./ToDoPage.styles.scss";
 import InputForm from "../../components/TodosFunctionality/InputForm/inputform.component";
 import List from "../../components/TodosFunctionality/List/List.component";
 const Todos = () => {
-  const [todos, setTodos] = useState([]);
+  const todos = useSelector((state) => state.todos.todos);
+  const dispatch = useDispatch();
 
   const todosHandler = (todo) => {
-    setTodos((prevTodos) => {
-      return [...prevTodos, todo];
-    });
+    dispatch(todoActions.addTodo(todo));
   };
 
   return (

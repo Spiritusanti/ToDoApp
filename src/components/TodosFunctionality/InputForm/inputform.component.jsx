@@ -45,6 +45,7 @@ const InputForm = ({ onSubmit }) => {
       task: taskInput,
       date: dateInput,
       description: descriptionInput,
+      isComplete: false,
     };
     onSubmit(todo);
     resetInputs();
