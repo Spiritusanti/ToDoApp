@@ -15,6 +15,7 @@ const TodoInputForm = () => {
       id: Date.now(),
       task: enteredTaskRef.current.value,
       description: enteredDescriptionRef.current.value,
+      complete: false,
     };
     dispatch(todoActions.addTodo(todo));
     enteredTaskRef.current.value = "";

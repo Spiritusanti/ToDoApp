@@ -19,7 +19,7 @@ export const todoSlice = createSlice({
       if (!isCurrentTodo) {
         return;
       }
-      isCurrentTodo.isComplete = true;
+      isCurrentTodo.complete = true;
     },
     deleteTodo(state, action) {
       // delete todo from state via array.filter();
