@@ -7,14 +7,13 @@ import TaskList from "./components/TodosFunctionality/TaskList.Component";
 // styles imports
 import "./App.scss";
 
-import { todos } from "./todos";
-
 function App() {
+
   return (
     <div className="App">
       <Header />
       <TodoInputForm />
-      <TaskList taskList={todos} />
+      <TaskList />
     </div>
   );
 }

@@ -1,11 +1,19 @@
 import { Fragment } from "react";
+import { useSelector } from "react-redux";
 import TaskItem from "./TaskItem.component";
 
-const TaskList = (props) => {
+const TaskList = () => {
+  const todos = useSelector((state) => state.todos.todos);
+
   return (
     <Fragment>
-      {props.taskList.map((task) => (
-        <TaskItem key={task.id} taskName={task.task} description={task.description} />
+      {todos.map((task) => (
+        <TaskItem
+          key={task.id}
+          id={task.id}
+          taskName={task.task}
+          description={task.description}
+        />
       ))}
     </Fragment>
   );
