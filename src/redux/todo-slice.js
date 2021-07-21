@@ -11,15 +11,25 @@ export const todoSlice = createSlice({
       state.todos.push(action.payload);
     },
     completeTodo(state, action) {
-      // locate todo by id and toggle isComplete value to true
-      const isCompletedTodo = action.payload;
+      // locate todo by id and toggle complete value to true
+      const isCompletedTodoId = action.payload;
       const isCurrentTodo = state.todos.find(
-        (todo) => todo.id === isCompletedTodo.id
+        (todo) => todo.id === isCompletedTodoId
       );
       if (!isCurrentTodo) {
         return;
       }
       isCurrentTodo.complete = true;
+    },
+    resumeTodo(state, action) {
+      const resumeTodoId = action.payload;
+      const isCurrentTodo = state.todos.find(
+        (todo) => todo.id === resumeTodoId
+      );
+      if (!isCurrentTodo) {
+        return;
+      }
+      isCurrentTodo.complete = false;
     },
     deleteTodo(state, action) {
       // delete todo from state via array.filter();

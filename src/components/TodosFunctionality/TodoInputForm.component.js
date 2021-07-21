@@ -1,42 +1,108 @@
-import { useRef } from "react";
+// react imports
+import { useState } from "react";
 // redux imports
 import { useDispatch } from "react-redux";
 import { todoActions } from "../../redux/todo-slice";
 import Card from "../UI/Card/Card.component";
+// style imports
+import classes from "./TodoInputForm.module.scss";
 
 const TodoInputForm = () => {
   const dispatch = useDispatch();
-  const enteredTaskRef = useRef();
-  const enteredDescriptionRef = useRef();
+  // input values
+  const [enteredTask, setEnteredTask] = useState("");
+  const [enteredDescription, setEnteredDescription] = useState("");
+  // input touched values
+  const [enteredTaskIsTouched, setEnteredTaskIsTouched] = useState(false);
+  const [enteredDescriptionIsTouched, setEnteredDescriptionIsTouched] =
+    useState(false);
+
+  // Input onChange handlers
+  const enteredTaskHandler = (event) => {
+    setEnteredTask(event.target.value);
+  };
+
+  const enteredDescriptionHandler = (event) => {
+    setEnteredDescription(event.target.value);
+  };
+
+  // Blur handlers
+  const enteredTaskBlurHandler = (event) => {
+    setEnteredTaskIsTouched(true);
+  };
+
+  const enteredDescriptionBlurHandler = (event) => {
+    setEnteredDescriptionIsTouched(true);
+  };
+
+  // Input reset
+  const resetInputs = () => {
+    setEnteredTask("");
+    setEnteredDescription("");
+    setEnteredTaskIsTouched(false);
+    setEnteredDescriptionIsTouched(false);
+  };
+
+  // validation
+  const enteredTaskIsValid = enteredTask.trim().length > 0;
+  const enteredDescriptionIsValid = enteredDescription.trim().length > 0;
+
+  // error handling
+  const enteredTaskHasError = !enteredTaskIsValid && enteredTaskIsTouched;
+  const enteredDescriptionHasError =
+    !enteredDescriptionIsValid && enteredDescriptionIsTouched;
 
   const submitHandler = (event) => {
     event.preventDefault();
-    //Need to perform some input validation here.
+    if (!enteredTaskIsTouched || !enteredDescriptionIsValid) {
+      return;
+    }
+
     const todo = {
       id: Date.now(),
-      task: enteredTaskRef.current.value,
-      description: enteredDescriptionRef.current.value,
+      task: enteredTask,
+      description: enteredDescription,
       complete: false,
     };
     dispatch(todoActions.addTodo(todo));
-    enteredTaskRef.current.value = "";
-    enteredDescriptionRef.current.value = "";
+    resetInputs();
   };
 
   return (
     <Card>
-      <form onSubmit={submitHandler}>
+      <label htmlFor="form">
+        <h1>Add tasks</h1>
+      </label>
+      <form className={classes.form} onSubmit={submitHandler}>
         <ul>
           <li>
             <label htmlFor="task">Enter Task:</label>
-            <input id="task" type="text" ref={enteredTaskRef} />
+            <input
+              id="task"
+              type="text"
+              onChange={enteredTaskHandler}
+              value={enteredTask}
+              onBlur={enteredTaskBlurHandler}
+            />
+            {enteredTaskHasError && (
+              <p style={{ color: "red" }}>Please enter a task</p>
+            )}
           </li>
           <li>
             <label htmlFor="description">Enter details:</label>
-            <input id="description" type="text" ref={enteredDescriptionRef} />
+            <input
+              id="description"
+              type="text"
+              onChange={enteredDescriptionHandler}
+              value={enteredDescription}
+              onBlur={enteredDescriptionBlurHandler}
+            />
+            {enteredDescriptionHasError && (
+              <p style={{ color: "red" }}>Please enter a description!</p>
+            )}
           </li>
         </ul>
-        <button>Add Task</button>
+        <button type="submit">Add Task</button>
       </form>
     </Card>
   );

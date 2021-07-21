@@ -4,7 +4,8 @@ import TaskItem from "./TaskItem.component";
 
 const TaskList = () => {
   const todos = useSelector((state) => state.todos.todos);
-  const inProgressTasks = todos.filter((task) => task.completed === false);
+  console.log(todos);
+  const inProgressTasks = todos.filter((task) => task.complete === false);
 
   return (
     <Card>
