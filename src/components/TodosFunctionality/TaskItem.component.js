@@ -1,6 +1,7 @@
 // Redux imports
 import { useDispatch } from "react-redux";
 import { todoActions } from "../../redux/todo-slice";
+import Card from "../UI/Card/Card.component";
 
 const TaskItem = (props) => {
   const dispatch = useDispatch();
@@ -14,12 +15,12 @@ const TaskItem = (props) => {
   };
 
   return (
-    <div>
+    <Card>
       <h2 onClick={onRemoveTask}>X</h2>
       <h2>{props.taskName}</h2>
       <p>{props.description}</p>
       <button onClick={onCompleteTask}>Complete Task</button>
-    </div>
+    </Card>
   );
 };
 

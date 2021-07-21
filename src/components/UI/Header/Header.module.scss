@@ -1,0 +1,15 @@
+.header {
+  background: seagreen;
+  width: 100%;
+  text-align: left;
+  .content {
+      padding: 1.5rem;
+    h1 {
+      margin: 0;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}

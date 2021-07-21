@@ -2,6 +2,7 @@ import { useRef } from "react";
 // redux imports
 import { useDispatch } from "react-redux";
 import { todoActions } from "../../redux/todo-slice";
+import Card from "../UI/Card/Card.component";
 
 const TodoInputForm = () => {
   const dispatch = useDispatch();
@@ -23,19 +24,21 @@ const TodoInputForm = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <ul>
-        <li>
-          <label htmlFor="task">Enter Task:</label>
-          <input id="task" type="text" ref={enteredTaskRef} />
-        </li>
-        <li>
-          <label htmlFor="description">Enter details:</label>
-          <input id="description" type="text" ref={enteredDescriptionRef} />
-        </li>
-      </ul>
-      <button>Add Task</button>
-    </form>
+    <Card>
+      <form onSubmit={submitHandler}>
+        <ul>
+          <li>
+            <label htmlFor="task">Enter Task:</label>
+            <input id="task" type="text" ref={enteredTaskRef} />
+          </li>
+          <li>
+            <label htmlFor="description">Enter details:</label>
+            <input id="description" type="text" ref={enteredDescriptionRef} />
+          </li>
+        </ul>
+        <button>Add Task</button>
+      </form>
+    </Card>
   );
 };
 

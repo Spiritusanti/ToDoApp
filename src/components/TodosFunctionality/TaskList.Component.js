@@ -1,13 +1,15 @@
-import { Fragment } from "react";
 import { useSelector } from "react-redux";
+import Card from "../UI/Card/Card.component";
 import TaskItem from "./TaskItem.component";
 
 const TaskList = () => {
   const todos = useSelector((state) => state.todos.todos);
+  const inProgressTasks = todos.filter((task) => task.completed === false);
 
   return (
-    <Fragment>
-      {todos.map((task) => (
+    <Card>
+    <h1>Tasks in progress:</h1>
+      {inProgressTasks.map((task) => (
         <TaskItem
           key={task.id}
           id={task.id}
@@ -15,7 +17,7 @@ const TaskList = () => {
           description={task.description}
         />
       ))}
-    </Fragment>
+    </Card>
   );
 };
 

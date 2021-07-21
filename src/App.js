@@ -5,15 +5,18 @@ import Header from "./components/UI/Header/Header.component";
 import TodoInputForm from "./components/TodosFunctionality/TodoInputForm.component";
 import TaskList from "./components/TodosFunctionality/TaskList.Component";
 // styles imports
-import "./App.scss";
+import classes from './App.module.scss';
+import CompletedTasks from "./components/TodosFunctionality/CompletedTasks.component";
 
 function App() {
-
   return (
-    <div className="App">
+    <div className={classes.app}>
       <Header />
       <TodoInputForm />
-      <TaskList />
+      <section className={classes.tasks}>
+        <TaskList />
+        <CompletedTasks />
+      </section>
     </div>
   );
 }
