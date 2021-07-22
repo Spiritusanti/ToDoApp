@@ -16,7 +16,7 @@ const TaskItem = (props) => {
 
   return (
     <Card>
-      <h2 onClick={onRemoveTask}>X</h2>
+      <button onClick={onRemoveTask}>Delete</button>
       <h2>{props.taskName}</h2>
       <p>{props.description}</p>
       <button onClick={onCompleteTask}>Complete Task</button>

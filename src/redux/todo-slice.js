@@ -38,7 +38,7 @@ export const todoSlice = createSlice({
       if (!isCurrentTodo) {
         return;
       }
-      state.todos.filter((todo) => todo.id !== todoId);
+      state.todos = state.todos.filter((todo) => todo.id !== todoId);
     },
   },
 });
