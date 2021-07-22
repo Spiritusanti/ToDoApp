@@ -54,7 +54,7 @@ const TodoInputForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (!enteredTaskIsTouched || !enteredDescriptionIsValid) {
+    if (!enteredTaskIsValid || !enteredDescriptionIsValid) {
       return;
     }
 
