@@ -1,0 +1,13 @@
+.complete {
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+
+  button {
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    padding: 0 1.5rem;
+    margin: 0.5rem;
+  }
+}

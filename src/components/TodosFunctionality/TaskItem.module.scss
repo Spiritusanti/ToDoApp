@@ -1,0 +1,41 @@
+.inProgress {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+
+  .content {
+      width: 100%;
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      padding: 0;
+      margin: 0;
+      gap: 1.5rem;
+
+      li {
+          padding: 0 1rem;
+          label {
+              border-bottom: 1px solid black;
+          }
+          h3 {
+              font-weight: 400;
+              font-size: 1.25rem;
+          }
+          p {
+            font-size: 0.75rem;  
+          }
+      }
+    }
+  }
+  button {
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+
+}
