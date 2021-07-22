@@ -7,11 +7,13 @@ import TaskList from "./components/TodosFunctionality/TaskList.Component";
 // styles imports
 import classes from './App.module.scss';
 import CompletedTasks from "./components/TodosFunctionality/CompletedTasks.component";
+import ProfileInsert from "./components/Profile/ProfileInsert.component";
 
 function App() {
   return (
     <div className={classes.app}>
       <Header />
+      <ProfileInsert />
       <TodoInputForm />
       <section className={classes.tasks}>
         <TaskList />
