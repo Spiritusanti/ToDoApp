@@ -10,7 +10,7 @@ const uiConfig = {
   ],
 };
 
-const SignInSignUp = () => {
+const SignIn = () => {
   return (
     <div>
       <h1>Todo App</h1>
@@ -20,4 +20,4 @@ const SignInSignUp = () => {
   );
 };
 
-export default SignInSignUp;
+export default SignIn;

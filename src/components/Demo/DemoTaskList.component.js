@@ -1,24 +1,24 @@
-import { useSelector } from "react-redux";
 import Card from "../UI/Card/Card.component";
-import TaskItem from "./TaskItem.component";
+import DemoTaskItem from "./DemoTaskItem.component";
 
-const TaskList = () => {
-  const todos = useSelector((state) => state.todos.todos);
-  const inProgressTasks = todos.filter((task) => task.complete === false);
+const DemoTaskList = (props) => {
+  const inProgressTasks = props.todos.filter((task) => task.complete === false);
 
   return (
     <Card>
       <h1>Tasks in progress:</h1>
       {inProgressTasks.map((task) => (
-        <TaskItem
+        <DemoTaskItem
           key={task.id}
           id={task.id}
           taskName={task.task}
           description={task.description}
+          completeTask={props.completeTask}
+          removeTask={props.removeTask}
         />
       ))}
     </Card>
   );
 };
 
-export default TaskList;
+export default DemoTaskList;
