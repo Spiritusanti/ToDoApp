@@ -1,16 +1,7 @@
-# More Complex TO DO app built with Create-React-App
+# More Complex TO DO app built with Create-React-App, Redux, and Firebase
 Goal of the project is to create a full stack To Do app capable of user authentication and storing and fetching user To Dos from a database.
 
-# Stage 1 - UI and front end functionality
-Goals:
-1. to create a clean and interactive design that is engaging and visually appealing to users.
-2. to lay out app logic and establish the flow of data in the app - good understanding at high level but details and coding are more difficult.
-   1. input form state is beginning to take shape - need to figure out how to pass it to parent and store in array so it can be mapped in the list component
-      1. completed!
-   2. need to create button functionality on ListItem component so we can check off and remove cards as needed - next challenge! -completed!
-3. Created menu following Maks Akymenko's guide @ https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/
-4. build appealing landing page - complete!
-   1. will need to add in user auth and sign in functionality
-
-# Stage 2 and beyond - backend and user auth
-1. will likely be using firebase and provided google auth service
+# Current State - UI and front end functionality under construction
+1. default route is the welcome page which displays a demo and option to create accout(currently under construction).
+2. todo page with actual app functionality using redux (needs to be hooked up to firebase and user account)
+3. profile page - TBD
