@@ -1,19 +1,26 @@
+// redux imports
+import { useDispatch } from "react-redux";
+import { demoActions } from "../../redux/demo-slice";
 // component imports
 import Card from "../UI/Card/Card.component";
+// style import
+import classes from "../TodosFunctionality/TaskItem.module.scss";
 
 const DemoTaskItem = (props) => {
+  const dispatch = useDispatch();
+
   const onCompleteTask = () => {
-    props.completeTask(props.id);
+    dispatch(demoActions.completeDemoTodo(props.id));
   };
 
   const onRemoveTask = () => {
-    props.removeTask(props.id);
+    dispatch(demoActions.deleteDemoTodo(props.id));
   };
 
   return (
     <Card>
-      <div>
-        <div>
+      <div className={classes.inProgress}>
+        <div className={classes.content}>
           <ul>
             <li>
               <label htmlFor="h3">Task:</label>

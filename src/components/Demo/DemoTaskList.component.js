@@ -1,8 +1,12 @@
+// redux imports
+import { useSelector } from "react-redux";
+// component imports
 import Card from "../UI/Card/Card.component";
 import DemoTaskItem from "./DemoTaskItem.component";
 
 const DemoTaskList = (props) => {
-  const inProgressTasks = props.todos.filter((task) => task.complete === false);
+  const tasks = useSelector((state) => state.demo.demoTasks);
+  const inProgressTasks = tasks.filter((task) => task.complete === false);
 
   return (
     <Card>
@@ -13,8 +17,6 @@ const DemoTaskList = (props) => {
           id={task.id}
           taskName={task.task}
           description={task.description}
-          completeTask={props.completeTask}
-          removeTask={props.removeTask}
         />
       ))}
     </Card>

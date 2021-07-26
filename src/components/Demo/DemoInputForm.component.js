@@ -1,9 +1,15 @@
 // react imports
 import { useState } from "react";
+// redux imports
+import { useDispatch } from "react-redux";
+import { demoActions } from "../../redux/demo-slice";
 // component imports
 import Card from "../UI/Card/Card.component";
+// style imports
+import classes from "../TodosFunctionality/TodoInputForm.module.scss";
 
-const DemoInputForm = (props) => {
+const DemoInputForm = () => {
+  const dispatch = useDispatch();
   // input values
   const [enteredTask, setEnteredTask] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
@@ -60,7 +66,7 @@ const DemoInputForm = (props) => {
       complete: false,
     };
 
-    props.onAddTodo(todo);
+    dispatch(demoActions.addDemoTodo(todo));
     resetInputs();
   };
 
@@ -69,7 +75,7 @@ const DemoInputForm = (props) => {
       <label htmlFor="form">
         <h1>Add tasks</h1>
       </label>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className={classes.form}>
         <ul>
           <li>
             <label htmlFor="task">Enter Task:</label>
@@ -103,6 +109,5 @@ const DemoInputForm = (props) => {
     </Card>
   );
 };
-
 
 export default DemoInputForm;
