@@ -1,5 +1,7 @@
+// component imports
 import Nav from "../Nav/Nav.component";
 import { Link } from "react-router-dom";
+// style imports
 import classes from "./Header.module.scss";
 
 const Header = () => {

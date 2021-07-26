@@ -1,0 +1,1 @@
+// need to figure out firebase auth requirements and then build reducers!

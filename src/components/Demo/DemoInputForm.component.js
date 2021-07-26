@@ -73,7 +73,7 @@ const DemoInputForm = () => {
   return (
     <Card>
       <label htmlFor="form">
-        <h1>Add tasks</h1>
+        <h1>Add a task</h1>
       </label>
       <form onSubmit={submitHandler} className={classes.form}>
         <ul>

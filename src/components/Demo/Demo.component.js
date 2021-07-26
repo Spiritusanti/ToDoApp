@@ -3,10 +3,10 @@ import DemoInputForm from "./DemoInputForm.component";
 import DemoTaskList from "./DemoTaskList.component";
 import DemoCompletedTaskList from "./DemoCompletedTaskList.component";
 
+
 const Demo = () => {
   return (
-    <section>
-      <h2>Add your task to the form below:</h2>
+    <section >
       <DemoInputForm />
       <div>
         <p>
