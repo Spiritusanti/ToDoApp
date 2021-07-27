@@ -1,0 +1,21 @@
+.userProfile {
+  display: flex;
+  gap: 1rem;
+
+  img {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .userInfo {
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0;
+
+    h1, h3 {
+        margin: 0;
+    }
+  }
+}

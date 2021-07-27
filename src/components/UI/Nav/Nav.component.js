@@ -32,10 +32,10 @@ const Nav = () => {
               <Link to={"/"} onClick={userSignedOut}>Logout</Link>
             </li>
             <li>
-              <Link to={"/"}>Tasks</Link>
+              <Link to={"/tasks"}>Tasks</Link>
             </li>
             <li>
-              <Link to={"/"}>Profile</Link>
+              <Link to={"/profile"}>Profile</Link>
             </li>
           </Fragment>
         )}
