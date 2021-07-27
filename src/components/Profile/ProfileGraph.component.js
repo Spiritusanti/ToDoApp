@@ -31,7 +31,7 @@ const ProfileGraph = (props) => {
           animate="true"
           data={taskBreakdownData}
           radius="50"
-          label={({dataEntry}) => tasks.length === 0 ? null : dataEntry.title}
+          label={({ dataEntry }) => dataEntry.title}
         />
       </div>
     </Fragment>
