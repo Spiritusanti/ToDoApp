@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import demoSlice from "./demo-slice";
 
-const initialState = { userInfo: {} };
+const initialState = { userIsLoggedIn: false, userInfo: {} };
 
 const authSlice = createSlice({
   name: "auth",
@@ -10,9 +10,11 @@ const authSlice = createSlice({
     onLogIn(state, action) {
       const newUserInfo = action.payload;
       state.userInfo = newUserInfo;
+      state.userIsLoggedIn = true
     },
-    onLogOut(state, action) {
+    onLogOut(state) {
       state.userInfo = {};
+      state.userIsLoggedIn = false;
     },
   },
 });
