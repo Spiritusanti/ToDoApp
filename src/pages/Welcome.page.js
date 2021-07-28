@@ -22,7 +22,7 @@ const Welcome = () => {
     <article className={classes.welcome}>
       {!showDemo && (
         <Card>
-          <div class={classes.demoToggle}>
+          <div className={classes.demoToggle}>
             <h2>see it in action!</h2>
             <button onClick={showDemoHandler}>Try the demo!</button>
           </div>
@@ -32,7 +32,7 @@ const Welcome = () => {
         <section>
           <h2>How it works</h2>
           <Demo />
-          <div class={classes.demoToggle}>
+          <div className={classes.demoToggle}>
             <button onClick={hideDemoHandler}>Hide Demo</button>
           </div>
         </section>

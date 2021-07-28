@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { demoTasks: [] };
 
-export const demoSlice = createSlice({
+const demoSlice = createSlice({
   name: "demo",
   initialState,
   reducers: {
