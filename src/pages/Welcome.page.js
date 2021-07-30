@@ -1,5 +1,7 @@
 // react imports
 import { useState } from "react";
+// redux imports
+import { useSelector } from "react-redux";
 // component imports
 import Demo from "../components/Demo/Demo.component";
 import SignIn from "../components/auth/SignIn";
@@ -8,6 +10,7 @@ import classes from "./Welcome.module.scss";
 import Card from "../components/UI/Card/Card.component";
 
 const Welcome = () => {
+  const userLoggedIn = useSelector((state) => state.auth.userIsLoggedIn);
   const [showDemo, setShowDemo] = useState(false);
 
   const showDemoHandler = () => {

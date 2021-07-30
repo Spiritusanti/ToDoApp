@@ -1,6 +1,5 @@
 // redux imports
 import { useSelector } from "react-redux";
-import ProfileGraph from "./ProfileGraph.component";
 // style imports
 import classes from "./ProfileStats.module.scss";
 
@@ -31,14 +30,6 @@ const ProfileStats = () => {
           <h3>{`percentage completed: ${percentageTasksCompleted}`}</h3>
         </li>
       </ul>
-      {tasks.length > 0 && (
-        <ProfileGraph
-          percentageTasksCompleted={percentageTasksCompleted}
-          tasks={tasks}
-          inProgressTasks={inProgressTasks}
-          completedTasks={completedTasks}
-        />
-      )}
     </section>
   );
 };

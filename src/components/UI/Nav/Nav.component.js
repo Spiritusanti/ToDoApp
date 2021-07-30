@@ -2,35 +2,38 @@
 import { Fragment } from "react";
 // redux imports
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../../redux/authActions";
+import { authActions } from "../../../redux/auth-slice";
+// firebase imports
+import firebase from "firebase";
 // component imports
 import { Link } from "react-router-dom";
 // style imports
 import classes from "./Nav.module.scss";
 
+
 // menu that will conditionally render options based on user login status.
 // will update as functionality is built in!
 const Nav = () => {
   const userLoggedIn = useSelector((state) => state.auth.userIsLoggedIn);
+  console.log(userLoggedIn);
   const dispatch = useDispatch();
 
-  const userSignedOut = () => {
-    dispatch(logOut());
+  const signOutHandler = () => {
+    dispatch(authActions.userLogout);
+    firebase.auth().signOut();
   };
 
   return (
     <nav>
       <ul className={classes.ul}>
-        {userLoggedIn ? (
+        {!userLoggedIn ? (
           <li>
             <Link to={"/"}>Sign in/Sign up</Link>
           </li>
         ) : (
           <Fragment>
-            <li>
-              <Link to={"/"} onClick={userSignedOut}>
-                Signout
-              </Link>
+            <li onClick={signOutHandler}>
+              <Link to={"/"}>Signout</Link>
             </li>
             <li>
               <Link to={"/tasks"}>Tasks</Link>
