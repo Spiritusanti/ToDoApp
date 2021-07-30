@@ -10,7 +10,7 @@ import classes from "./Welcome.module.scss";
 import Card from "../components/UI/Card/Card.component";
 
 const Welcome = () => {
-  const userLoggedIn = useSelector((state) => state.auth.userIsLoggedIn);
+  // const userLoggedIn = useSelector((state) => state.auth.userIsLoggedIn);
   const [showDemo, setShowDemo] = useState(false);
 
   const showDemoHandler = () => {

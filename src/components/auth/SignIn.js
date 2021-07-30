@@ -1,12 +1,12 @@
 // react imports
 import { useEffect, useState } from "react";
 // redux imports
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../redux/auth-slice";
 // firebase imports
 import { StyledFirebaseAuth } from "react-firebaseui";
 import { uiConfig, Auth } from "../../firebase/firebase";
-import firebase from "firebase";
+import app from "../../firebase/firebase";
 // component imports
 import Card from "../UI/Card/Card.component";
 // style imports
@@ -14,24 +14,22 @@ import classes from "./SignIn.module.scss";
 
 const SignIn = () => {
   const dispatch = useDispatch();
+  const userIsSignedIn = useSelector((state) => state.auth.userIsLoggedIn);
   const [userInfo, setUserInfo] = useState(null);
-  console.log(userInfo);
 
   useEffect(() => {
-    const unregisterAuthObserver = firebase
-      .auth()
-      .onAuthStateChanged((user) => {
-        setUserInfo(user);
-      });
+    const unregisterAuthObserver = app.auth().onAuthStateChanged((user) => {
+      setUserInfo(user);
+    });
     return () => unregisterAuthObserver();
   }, []);
 
   useEffect(() => {
-    if (userInfo) {
+    if (userInfo && !userIsSignedIn) {
       const { displayName, uid } = userInfo;
       dispatch(authActions.userLogin({ displayName, uid }));
     }
-  }, [dispatch, userInfo]);
+  }, [dispatch, userInfo, userIsSignedIn]);
 
   return (
     <Card>

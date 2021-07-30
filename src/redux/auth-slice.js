@@ -11,9 +11,10 @@ const authSlice = createSlice({
       state.userInfo = newUserInfo;
       state.userIsLoggedIn = true;
     },
-    userLogout(state) {
+    userLogout(state, action) {
+      const currentUser = action.payload;
       state.userIsLoggedIn = false;
-      state.userInfo = null;
+      state.userInfo = currentUser;
     },
   },
 });
