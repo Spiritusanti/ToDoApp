@@ -26,8 +26,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (userInfo && !userIsSignedIn) {
-      const { displayName, uid } = userInfo;
-      dispatch(authActions.userLogin({ displayName, uid }));
+      dispatch(authActions.userLogin(userInfo));
     }
   }, [dispatch, userInfo, userIsSignedIn]);
 

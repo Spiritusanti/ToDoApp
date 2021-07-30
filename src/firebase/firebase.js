@@ -4,13 +4,17 @@ import firebaseConfig from "../config/firebaseConfig";
 const app = firebase.initializeApp(firebaseConfig);
 
 export const uiConfig = {
-  signInSuccessWithAuthResult: function () {
-    return true;
+  signInFlow: "popup",
+  callbacks: {
+    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+      return false;
+    },
   },
+  signInSuccessUrl: "/tasks",
   signInOptions: [
     {
       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: false,
+      requireDisplayName: true,
     },
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],

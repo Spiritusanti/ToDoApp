@@ -18,8 +18,7 @@ const Nav = () => {
 
   const signOutHandler = () => {
     app.auth().signOut();
-    const currentUser = app.auth().currentUser;
-    dispatch(authActions.userLogout(currentUser));
+    dispatch(authActions.userLogout(null));
   };
 
   return (
