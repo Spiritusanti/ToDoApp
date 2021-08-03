@@ -12,8 +12,8 @@ import classes from "./SignIn.module.scss";
 const SignUp = () => {
   const dispatch = useDispatch();
   const enteredEmailRef = useRef();
-  const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
+  const enteredPasswordRef = useRef();
+  const enteredConfirmPasswordRef = useRef();
   const [passwordError, setPasswordError] = useState(null);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(Auth);
@@ -25,25 +25,21 @@ const SignUp = () => {
     }
   }, [user, dispatch]);
 
-  // password change handlers
-  const enteredPasswordHandler = (event) => {
-    setEnteredPassword(event.target.value);
-  };
-
-  const enteredConfirmPasswordHandler = (event) => {
-    setEnteredConfirmPassword(event.target.value);
-  };
   // confirm password check
-  const passwordIsConfirmed = enteredPassword === enteredConfirmPassword;
-  if (!passwordIsConfirmed) {
-    setPasswordError("Passwords do not match!");
-  }
+  useEffect(() => {
+    const passwordIsConfirmed =
+      enteredPasswordRef.current.value ===
+      enteredConfirmPasswordRef.current.value;
+    if (!passwordIsConfirmed) {
+      setPasswordError("Passwords do not match!");
+    }
+  }, []);
 
   //   signup handler
   const signUpHandler = () => {
     if (!passwordError) {
       const email = enteredEmailRef.current.value;
-      const password = enteredPassword;
+      const password = enteredPasswordRef.current.value;
       createUserWithEmailAndPassword(email, password);
     }
   };
@@ -52,7 +48,7 @@ const SignUp = () => {
     return <p>Loading ...</p>;
   }
   return (
-    <div className={classes.auth}>
+    <form className={classes.auth}>
       <h1>sign-up</h1>
       <ul>
         <li>
@@ -64,8 +60,7 @@ const SignUp = () => {
           <input
             type="password"
             id="password"
-            value={enteredPassword}
-            onChange={enteredPasswordHandler}
+            ref={enteredPasswordRef}
             minLength="6"
           />
         </li>
@@ -74,8 +69,7 @@ const SignUp = () => {
           <input
             type="password"
             id="confirm-password"
-            value={enteredConfirmPassword}
-            onChange={enteredConfirmPasswordHandler}
+            ref={enteredConfirmPasswordRef}
             minLength="6"
           />
         </li>
@@ -88,7 +82,7 @@ const SignUp = () => {
           Google Sign-In
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

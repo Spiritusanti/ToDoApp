@@ -1,0 +1,70 @@
+.btnContainerClose {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    text-decoration: none;
+    color: black;
+    padding-right: 0.25rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.5);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  button {
+    border: none;
+    border-radius: 3px;
+    width: 12rem;
+    padding: 1.5rem 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+form {
+  ul {
+    text-transform: uppercase;
+    list-style: none;
+    li {
+      display: grid;
+      grid-template-columns: 0.25fr 3fr;
+      text-align: left;
+      align-items: center;
+      label {
+        vertical-align: bottom;
+      }
+      input {
+        margin: 1rem;
+        border: none;
+        border-bottom: 1px solid black;
+      }
+
+      &:nth-of-type(2) {
+        input {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

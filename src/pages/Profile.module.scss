@@ -1,0 +1,11 @@
+article {
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+  max-width: 1800px;
+  .userInfo {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
