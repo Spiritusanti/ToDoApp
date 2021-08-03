@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from "react-router";
 import Tasks from "./pages/Tasks.page";
 import Welcome from "./pages/Welcome.page";
 import Profile from "./pages/Profile.page";
+import AuthPage from "./pages/Auth.page";
 // Component imports
 import Header from "./components/UI/Header/Header.component";
 // styles imports
@@ -16,6 +17,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Welcome />
+        </Route>
+        <Route exact path="/signin">
+          <AuthPage />
         </Route>
         <Route exact path="/tasks">
           <Tasks />

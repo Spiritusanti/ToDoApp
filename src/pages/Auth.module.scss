@@ -1,0 +1,17 @@
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  a {
+    text-decoration: none;
+    color: black;
+    padding-right: 0.25rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+.forms {
+  display: flex;
+  gap: 1.5rem;
+}
