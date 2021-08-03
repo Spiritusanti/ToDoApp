@@ -1,6 +1,8 @@
 .userProfile {
   display: flex;
   gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid black;
 
   img {
     height: 5rem;
@@ -14,7 +16,7 @@
     justify-content: flex-end;
     gap: 0;
 
-    h1, h3 {
+    h1 {
         margin: 0;
     }
   }

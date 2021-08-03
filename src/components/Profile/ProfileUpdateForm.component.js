@@ -1,5 +1,5 @@
 // react imports
-import { useState, Fragment } from "react";
+import { useState} from "react";
 // style imports
 import classes from "./ProfileUpdateForm.module.scss";
 
@@ -23,7 +23,7 @@ const ProfileUpdateForm = () => {
         </div>
       )}
       {showForm && (
-        <form onSubmit={hideFormHandler}>
+        <form className={classes.profileForm} onSubmit={hideFormHandler}>
           <h1>Update your Profile</h1>
           <div className={classes.btnContainerClose}>
             <button>&#10006;</button>

@@ -7,7 +7,10 @@ import classes from "./ProfileUserInfo.module.scss";
 const ProfileUserInfo = () => {
   const user = useSelector((state) => state.auth.userInfo);
 
-  const displayName = user.displayName ? user.displayName : "Username";
+  // displayname
+  const displayName = user.user.displayName
+    ? user.user.displayName
+    : "Username";
   return (
     <section className={classes.userProfile}>
       <img
@@ -16,7 +19,6 @@ const ProfileUserInfo = () => {
       />
       <div className={classes.userInfo}>
         <h1>{displayName}</h1>
-        <h3>Joined: placeholder</h3>
       </div>
     </section>
   );
