@@ -5,7 +5,11 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../../redux/auth-slice";
 // firebase imports
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Auth } from "../../firebase/firebase";
+import app, {
+  Auth,
+  googleAuthProvider,
+  googleSignInPopup,
+} from "../../firebase/firebase";
 // style imports
 import classes from "./SignIn.module.scss";
 
@@ -15,6 +19,7 @@ const SignUp = () => {
   const enteredPasswordRef = useRef();
   const enteredConfirmPasswordRef = useRef();
   const [passwordError, setPasswordError] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(Auth);
 
@@ -23,7 +28,10 @@ const SignUp = () => {
     if (user) {
       dispatch(authActions.userLogin(user));
     }
-  }, [user, dispatch]);
+    if (userInfo) {
+      dispatch(authActions.userLogin(userInfo));
+    }
+  }, [user, userInfo, dispatch]);
 
   // confirm password check
   useEffect(() => {
@@ -42,6 +50,15 @@ const SignUp = () => {
       const password = enteredPasswordRef.current.value;
       createUserWithEmailAndPassword(email, password);
     }
+  };
+
+  // google auth handler
+  const googleSignInHandler = () => {
+    if (app.auth().currentUser) {
+      setUserInfo(app.auth().currentUser);
+    }
+    googleSignInPopup(googleAuthProvider);
+    setUserInfo(app.auth().currentUser);
   };
 
   if (loading) {
@@ -78,7 +95,10 @@ const SignUp = () => {
       {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
       <div className={classes.btnContainer}>
         <button onClick={signUpHandler}>Sign-Up</button>
-        <button style={{ background: "#4285F4", color: "White" }}>
+        <button
+          style={{ background: "#4285F4", color: "White" }}
+          onClick={googleSignInHandler}
+        >
           Google Sign-In
         </button>
       </div>

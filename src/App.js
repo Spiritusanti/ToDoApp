@@ -1,5 +1,6 @@
 // library imports
-import { Redirect, Route, Switch } from "react-router";
+import { useEffect } from "react";
+import { Redirect, Route, Switch, useHistory } from "react-router";
 // Page imports
 import Tasks from "./pages/Tasks.page";
 import Welcome from "./pages/Welcome.page";
@@ -9,8 +10,23 @@ import AuthPage from "./pages/Auth.page";
 import Header from "./components/UI/Header/Header.component";
 // styles imports
 import classes from "./App.module.scss";
+import app from "./firebase/firebase";
+import { useDispatch } from "react-redux";
+import { authActions } from "./redux/auth-slice";
 
 function App() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (app.auth().currentUser) {
+      const user = app.auth().currentUser;
+      dispatch(authActions.userLogin(user));
+      history.push("/tasks");
+    }
+    history.push("/");
+  }, [dispatch, history]);
+
   return (
     <div className={classes.app}>
       <Header />

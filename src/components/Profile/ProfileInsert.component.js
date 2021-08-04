@@ -11,15 +11,19 @@ import classes from "./ProfileInsert.module.scss";
 // Includes a profile image and username.
 const ProfileInsert = () => {
   const user = useSelector((state) => state.auth.userInfo);
-  const displayName = user.user.displayName;
+  // placeholder profile image
+  const placeholderImage =
+    "https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png";
+
+  // displayname
+  const displayName = user.displayName ? user.displayName : "Username";
+  // user image
+  const userImage = user.photoURL ? user.photoURL : placeholderImage;
   return (
     <Card>
       <article className={classes.insert}>
         <section className={classes.userInfo}>
-          <img
-            src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
-            alt="profile"
-          />
+          <img src={userImage} alt="profile" />
           {!displayName && <Link to="/profile">Edit profile</Link>}
           {displayName && <h2>{displayName}</h2>}
         </section>
