@@ -23,12 +23,16 @@ const SignIn = () => {
 
   // redux dispatch
   useEffect(() => {
-    if (userInfo) {
-      dispatch(authActions.userLogin(userInfo));
+    let mounted = true;
+    if (mounted) {
+      if (userInfo) {
+        dispatch(authActions.userLogin(userInfo));
+      }
+      if (user) {
+        dispatch(authActions.userLogin(user));
+      }
     }
-    if (user) {
-      dispatch(authActions.userLogin(user));
-    }
+    return () => (mounted = false);
   }, [userInfo, user, dispatch]);
 
   // email and password auth handler

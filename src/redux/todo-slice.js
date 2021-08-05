@@ -3,9 +3,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = { todos: [], status: "" };
 
 export const getTasks = createAsyncThunk("todo/getTodo", async (uid) => {
-  return fetch(`https://todoapp-6d4de-default-rtdb.firebaseio.com/${uid}`).then(
-    (res) => res.json()
+  const response = await fetch(
+    `https://todoapp-6d4de-default-rtdb.firebaseio.com/${uid}`
   );
+  const data = await response.json();
+  console.log(data);
 });
 
 export const todoSlice = createSlice({
