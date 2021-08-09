@@ -1,0 +1,20 @@
+.error {
+  background-color: rgb(255, 244, 187);
+  color: rgb(67, 118, 192);
+  height: 88vh;
+  width: 100%;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .errorImage {
+    display: inline-block;
+    background-image: url("https://i.imgur.com/WvEu0cO.png");
+    background-size: cover;
+    background-position: center;
+    width: 40vh;
+    height: 40vh;
+  }
+}
