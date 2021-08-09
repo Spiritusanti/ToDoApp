@@ -1,8 +1,9 @@
 // React imports
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 // redux imports
 import { useDispatch } from "react-redux";
-import { getTasks } from "../redux/todo-slice";
+import { todoActions } from "../redux/todo-slice";
+import { useGetTasksByUID } from "../redux/services/firebase-query";
 // component imports
 import TodoInputForm from "../components/TodosFunctionality/TodoInputForm.component";
 import TaskList from "../components/TodosFunctionality/TaskList.Component";
@@ -14,15 +15,26 @@ import app from "../firebase/firebase";
 
 const Tasks = () => {
   const dispatch = useDispatch();
+  const [uid, setUid] = useState(null);
+  // const { data, error, isLoading } = useGetTasksByUID(uid);
 
+  // grab uid on render to initiate query
   useEffect(() => {
     let mounted = true;
     if (mounted && app.auth().currentUser) {
-      const uid = app.auth().currentUser.uid;
-      dispatch(getTasks(uid));
+      setUid(app.auth().currentUser.uid);
     }
     return () => (mounted = false);
-  });
+  }, []);
+
+  // dispatch to redux to set todos
+  // useEffect(() => {
+  //   let mounted = true;
+  //   if (mounted && data) {
+  //     dispatch(todoActions.loadTodos(data));
+  //   }
+  //   return () => (mounted = false);
+  // }, [data, dispatch]);
 
   return (
     <Fragment>

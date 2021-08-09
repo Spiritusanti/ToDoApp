@@ -4,21 +4,25 @@ import firebaseConfig from "../config/firebaseConfig";
 const app = firebase.initializeApp(firebaseConfig);
 
 // googleSignIn Popup
-export const googleSignInPopup = (provider) => {
-  firebase
+export const googleSignInPopup = async (provider) => {
+  const user = await firebase
     .auth()
     .signInWithPopup(provider)
     .then((result) => {
-      const user = result.user;
+      const user = {
+        uid: result.user.uid,
+        displayName: result.user.displayName,
+        token: result.user.getIdToken,
+      };
       return user;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
-      const credential = error.credential;
-      console.log(errorCode, errorMessage, email, credential);
+      console.log(errorCode, errorMessage, email);
     });
+  return user;
 };
 
 // firebase exports

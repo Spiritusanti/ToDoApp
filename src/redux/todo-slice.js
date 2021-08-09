@@ -1,14 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { todos: [], status: "" };
-
-export const getTasks = createAsyncThunk("todo/getTodo", async (uid) => {
-  const response = await fetch(
-    `https://todoapp-6d4de-default-rtdb.firebaseio.com/${uid}`
-  );
-  const data = await response.json();
-  console.log(data);
-});
 
 export const todoSlice = createSlice({
   name: "todo",
@@ -48,17 +40,9 @@ export const todoSlice = createSlice({
       }
       state.todos = state.todos.filter((todo) => todo.id !== todoId);
     },
-  },
-  extraReducers: {
-    [getTasks.pending]: (state) => {
-      state.status = "loading";
-    },
-    [getTasks.fulfilled]: (state, { payload }) => {
-      state.todos = payload;
-      state.status = "success";
-    },
-    [getTasks.rejected]: (state) => {
-      state.status = "failed";
+    loadTodos(state, action) {
+      const loadedTodos = action.payload;
+      state.todos = (prevTodos) => [...prevTodos, loadedTodos];
     },
   },
 });

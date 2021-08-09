@@ -29,7 +29,13 @@ const SignIn = () => {
         dispatch(authActions.userLogin(userInfo));
       }
       if (user) {
-        dispatch(authActions.userLogin(user));
+        dispatch(
+          authActions.userLogin({
+            uid: user.user.uid,
+            displayName: user.user.displayName,
+            token: user.user.getIdToken,
+          })
+        );
       }
     }
     return () => (mounted = false);
@@ -43,12 +49,9 @@ const SignIn = () => {
   };
 
   // google auth handler
-  const googleSignInHandler = () => {
-    if (app.auth().currentUser) {
-      setUserInfo(app.auth().currentUser);
-    }
-    googleSignInPopup(googleAuthProvider);
-    setUserInfo(app.auth().currentUser);
+  const googleSignInHandler = async () => {
+    const user = await googleSignInPopup(googleAuthProvider);
+    setUserInfo(user);
   };
 
   if (loading) {
