@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../../redux/auth-slice";
 // firebase imports
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import app, {
+import {
   Auth,
   googleSignInPopup,
   googleAuthProvider,

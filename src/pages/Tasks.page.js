@@ -1,5 +1,5 @@
 // React imports
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, Suspense } from "react";
 // redux imports
 import { useDispatch } from "react-redux";
 import { todoActions } from "../redux/todo-slice";
@@ -9,6 +9,7 @@ import TodoInputForm from "../components/TodosFunctionality/TodoInputForm.compon
 import TaskList from "../components/TodosFunctionality/TaskList.Component";
 import CompletedTasks from "../components/TodosFunctionality/CompletedTasks.component";
 import ProfileInsert from "../components/Profile/ProfileInsert.component";
+import Spinner from "../components/UI/Spinner/Spinner.component";
 // style imports
 import classes from "./Task.module.scss";
 import app from "../firebase/firebase";
@@ -38,12 +39,14 @@ const Tasks = () => {
 
   return (
     <Fragment>
-      <ProfileInsert />
-      <TodoInputForm />
-      <section className={classes.tasks}>
-        <TaskList />
-        <CompletedTasks />
-      </section>
+      <Suspense fallback={Spinner}>
+        <ProfileInsert />
+        <TodoInputForm />
+        <section className={classes.tasks}>
+          <TaskList />
+          <CompletedTasks />
+        </section>
+      </Suspense>
     </Fragment>
   );
 };
