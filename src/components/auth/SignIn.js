@@ -33,7 +33,6 @@ const SignIn = () => {
           authActions.userLogin({
             uid: user.user.uid,
             displayName: user.user.displayName,
-            token: user.user.getIdToken,
           })
         );
       }

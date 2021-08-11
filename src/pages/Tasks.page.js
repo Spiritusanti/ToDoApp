@@ -1,9 +1,8 @@
 // React imports
-import { Fragment, useEffect, useState, Suspense } from "react";
+import { Fragment, useEffect, Suspense, useState } from "react";
 // redux imports
-import { useDispatch } from "react-redux";
-import { todoActions } from "../redux/todo-slice";
-import { useGetTasksByUID } from "../redux/services/firebase-query";
+import { useDispatch, useSelector } from "react-redux";
+import { useFetchUserTodosQuery } from "../redux/services/firebaseAPI";
 // component imports
 import TodoInputForm from "../components/TodosFunctionality/TodoInputForm.component";
 import TaskList from "../components/TodosFunctionality/TaskList.Component";
@@ -12,30 +11,21 @@ import ProfileInsert from "../components/Profile/ProfileInsert.component";
 import Spinner from "../components/UI/Spinner/Spinner.component";
 // style imports
 import classes from "./Task.module.scss";
-import app from "../firebase/firebase";
 
 const Tasks = () => {
+  const user = useSelector((state) => state.auth.userInfo);
+  const [retrieved, setRetrieved] = useState();
   const dispatch = useDispatch();
-  const [uid, setUid] = useState(null);
-  // const { data, error, isLoading } = useGetTasksByUID(uid);
+  const { data = [], isFetching } = useFetchUserTodosQuery(user.uid);
 
-  // grab uid on render to initiate query
   useEffect(() => {
     let mounted = true;
-    if (mounted && app.auth().currentUser) {
-      setUid(app.auth().currentUser.uid);
+    if (!isFetching && user && mounted) {
+      setRetrieved(data);
     }
-    return () => (mounted = false);
-  }, []);
-
-  // dispatch to redux to set todos
-  // useEffect(() => {
-  //   let mounted = true;
-  //   if (mounted && data) {
-  //     dispatch(todoActions.loadTodos(data));
-  //   }
-  //   return () => (mounted = false);
-  // }, [data, dispatch]);
+    console.log(retrieved);
+    return (mounted = false);
+  }, [data, isFetching, retrieved, user]);
 
   return (
     <Fragment>

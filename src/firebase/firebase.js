@@ -12,7 +12,6 @@ export const googleSignInPopup = async (provider) => {
       const user = {
         uid: result.user.uid,
         displayName: result.user.displayName,
-        token: result.user.getIdToken,
       };
       return user;
     })

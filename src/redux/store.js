@@ -2,15 +2,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import todoSlice from "./todo-slice";
 import demoSlice from "./demo-slice";
 import authSlice from "./auth-slice";
-import { firebaseDBQuery } from "./services/firebase-query";
+import { firebaseAPI } from "./services/firebaseAPI";
 
 export const store = configureStore({
   reducer: {
     todos: todoSlice.reducer,
     demo: demoSlice.reducer,
     auth: authSlice.reducer,
-    [firebaseDBQuery.reducerPath]: firebaseDBQuery.reducer,
+    [firebaseAPI.reducerPath]: firebaseAPI.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(firebaseDBQuery.middleware),
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(firebaseAPI.middleware);
+  },
 });
