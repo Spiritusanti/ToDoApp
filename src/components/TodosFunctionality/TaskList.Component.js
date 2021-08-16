@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux";
 import Card from "../UI/Card/Card.component";
 import TaskItem from "./TaskItem.component";
 
-const TaskList = () => {
-  const todos = useSelector((state) => state.todos.todos);
+const TaskList = (todos) => {
   const inProgressTasks = todos.filter((task) => task.complete === false);
+  console.log(todos);
 
   return (
     <Card>

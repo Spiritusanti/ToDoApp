@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { todoActions } from "../../redux/todo-slice";
 import Card from "../UI/Card/Card.component";
+// firebase imports
+import app from "../../firebase/firebase";
 // style imports
 import classes from "./TodoInputForm.module.scss";
 
@@ -16,6 +18,8 @@ const TodoInputForm = () => {
   const [enteredTaskIsTouched, setEnteredTaskIsTouched] = useState(false);
   const [enteredDescriptionIsTouched, setEnteredDescriptionIsTouched] =
     useState(false);
+
+  const uid = app.auth().currentUser.uid;
 
   // Input onChange handlers
   const enteredTaskHandler = (event) => {
@@ -52,6 +56,23 @@ const TodoInputForm = () => {
   const enteredDescriptionHasError =
     !enteredDescriptionIsValid && enteredDescriptionIsTouched;
 
+  // firebase POST functionality
+  const addTaskHandler = async (todo, uid) => {
+    const response = await fetch(
+      `https://todoapp-6d4de-default-rtdb.firebaseio.com/${uid}/tasks.json`,
+      {
+        method: "POST",
+        body: JSON.stringify(todo),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
+
+  // sumbit handler
   const submitHandler = (event) => {
     event.preventDefault();
     if (!enteredTaskIsValid || !enteredDescriptionIsValid) {
@@ -64,6 +85,7 @@ const TodoInputForm = () => {
       description: enteredDescription,
       complete: false,
     };
+    addTaskHandler(todo, uid);
     dispatch(todoActions.addTodo(todo));
     resetInputs();
   };
