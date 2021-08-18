@@ -1,7 +1,8 @@
 // React imports
-import { Fragment, useEffect, Suspense, useState, useCallback } from "react";
+import { Fragment, useEffect, Suspense, useState } from "react";
 // redux imports
 import { useDispatch, useSelector } from "react-redux";
+import { todoActions } from "../redux/todo-slice";
 // import { useFetchUserTodosQuery } from "../redux/services/firebaseAPI";
 // component imports
 import TodoInputForm from "../components/TodosFunctionality/TodoInputForm.component";
@@ -11,37 +12,33 @@ import ProfileInsert from "../components/Profile/ProfileInsert.component";
 import Spinner from "../components/UI/Spinner/Spinner.component";
 // style imports
 import classes from "./Task.module.scss";
+import app from "../firebase/firebase";
 
 const Tasks = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todos);
   const user = useSelector((state) => state.auth.userInfo);
-  const [retrievedTodos, setRetrievedTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchUserTasks = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const response = await fetch(
-        `https://todoapp-6d4de-default-rtdb.firebaseio.com/${user.uid}/tasks.json`
-      );
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-      const data = await response.json();
-      setRetrievedTodos(data);
-      console.log(retrievedTodos);
-    } catch (error) {
-      setError(error.message);
-    }
-    setIsLoading(false);
-  }, [user, retrievedTodos]);
+  const fetchedTodosRef = app.database().ref(`${user.uid}/tasks`);
 
   useEffect(() => {
-    fetchUserTasks();
-  }, [fetchUserTasks]);
+    let mounted = true;
+    if (mounted) {
+      setIsLoading(true);
+      fetchedTodosRef.once("value").then((snapshot) => {
+        const data = snapshot.val();
+        if (!data) {
+          setError("No tasks found!");
+        }
+        const transformedData = Object.values(data);
+        dispatch(todoActions.loadTodos(transformedData));
+      });
+      setIsLoading(false);
+    }
+    return (mounted = false);
+  }, [fetchedTodosRef, dispatch]);
 
   let content = <p>No tasks found</p>;
   if (todos.length > 0) {
