@@ -58,7 +58,20 @@ const TodoInputForm = () => {
 
   // firebase POST functionality
   const addTaskHandler = async (todo, uid) => {
-    app.database().ref(`${uid}/tasks`).push(todo);
+    const response = await fetch(
+      `https://todoapp-6d4de-default-rtdb.firebaseio.com/${uid}/tasks.json`,
+      {
+        method: "POST",
+        body: JSON.stringify(todo),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    if (data) {
+      return;
+    }
   };
 
   // sumbit handler

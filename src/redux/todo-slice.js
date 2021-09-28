@@ -42,7 +42,17 @@ export const todoSlice = createSlice({
     },
     loadTodos(state, action) {
       const loadedTodos = action.payload;
-      state.todos = (prevTodos) => [...prevTodos, loadedTodos];
+      for (const task in loadedTodos) {
+        const parsedTask = Object.values(Object.values(task));
+        console.log(parsedTask);
+        const data = {
+          id: parsedTask.id,
+          task: parsedTask.task,
+          description: parsedTask.description,
+          complete: parsedTask.complete,
+        };
+        state.todos.push(data);
+      }
     },
   },
 });

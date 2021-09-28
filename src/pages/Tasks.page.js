@@ -1,9 +1,8 @@
 // React imports
-import { Fragment, useEffect, Suspense, useState } from "react";
+import { Fragment, useEffect, Suspense, useState, useCallback } from "react";
 // redux imports
 import { useDispatch, useSelector } from "react-redux";
 import { todoActions } from "../redux/todo-slice";
-// import { useFetchUserTodosQuery } from "../redux/services/firebaseAPI";
 // component imports
 import TodoInputForm from "../components/TodosFunctionality/TodoInputForm.component";
 import TaskList from "../components/TodosFunctionality/TaskList.Component";
@@ -12,7 +11,6 @@ import ProfileInsert from "../components/Profile/ProfileInsert.component";
 import Spinner from "../components/UI/Spinner/Spinner.component";
 // style imports
 import classes from "./Task.module.scss";
-import app from "../firebase/firebase";
 
 const Tasks = () => {
   const dispatch = useDispatch();
@@ -21,24 +19,24 @@ const Tasks = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchedTodosRef = app.database().ref(`${user.uid}/tasks`);
+  const fetchUserTodos = useCallback(async () => {
+    setError(null);
+    const response = await fetch(
+      `https://todoapp-6d4de-default-rtdb.firebaseio.com/${user.uid}/tasks.json`
+    );
+    if (!response.ok) {
+      setError("Could not fetch tasks!");
+      return;
+    }
+    const data = await response.json();
+    dispatch(todoActions.loadTodos(data));
+  }, [user.uid, dispatch]);
 
   useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      setIsLoading(true);
-      fetchedTodosRef.once("value").then((snapshot) => {
-        const data = snapshot.val();
-        if (!data) {
-          setError("No tasks found!");
-        }
-        const transformedData = Object.values(data);
-        dispatch(todoActions.loadTodos(transformedData));
-      });
-      setIsLoading(false);
-    }
-    return (mounted = false);
-  }, [fetchedTodosRef, dispatch]);
+    setIsLoading(true);
+    fetchUserTodos();
+    setIsLoading(false);
+  }, [fetchUserTodos]);
 
   let content = <p>No tasks found</p>;
   if (todos.length > 0) {
