@@ -42,14 +42,14 @@ export const todoSlice = createSlice({
     },
     loadTodos(state, action) {
       const loadedTodos = action.payload;
-      for (const task in loadedTodos) {
-        const parsedTask = Object.values(Object.values(task));
-        console.log(parsedTask);
+      const parsedTodos = Object.values(loadedTodos);
+      for (const item of parsedTodos) {
+        const { complete, description, id, task } = item;
         const data = {
-          id: parsedTask.id,
-          task: parsedTask.task,
-          description: parsedTask.description,
-          complete: parsedTask.complete,
+          id,
+          task,
+          description,
+          complete,
         };
         state.todos.push(data);
       }

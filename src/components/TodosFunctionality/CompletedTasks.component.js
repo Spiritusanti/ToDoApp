@@ -3,7 +3,7 @@ import CompletedTaskItem from "./CompletedTaskItem.component";
 
 // build a component similar to TaskList but that only displays tasks that have been completed
 const CompletedTasks = (todos) => {
-  const completedTasks = todos.filter((task) => task.complete === true);
+  const completedTasks = todos.todos.filter((task) => task.complete === true);
 
   return (
     <Card>

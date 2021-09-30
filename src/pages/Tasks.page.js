@@ -15,6 +15,7 @@ import classes from "./Task.module.scss";
 const Tasks = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todos);
+  console.log(todos);
   const user = useSelector((state) => state.auth.userInfo);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
